@@ -11,11 +11,30 @@ html {
   font-family: "Graphik";
 }
 
- @font-face {
+h2, .h2 {
+  @apply text-2xl font-medium;
+}
+
+.vr {
+  @apply h-5 w-0.5 rounded-xl;
+  @apply bg-white bg-opacity-10;
+}
+
+@font-face {
   font-family: 'Graphik';
+  font-style: normal;
+  font-weight: 400;
   font-display: swap;
   src: local(''),
        url('~assets/fonts/graphik/GraphikRegular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Graphik';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local(''),
+       url('~assets/fonts/graphik/GraphikMedium.woff2') format('woff2');
 }
 
 /* @font-face {
