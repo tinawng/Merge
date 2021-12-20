@@ -6,12 +6,12 @@
     "dev": "nuxt",
     "generate": "nuxt generate --modern"
   },
-  "dependencies": {
-    "@nuxt/http": "^0.6.4"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@nuxt/http": "^0.6.4",
     "@nuxtjs/tailwindcss": "latest",
     "nuxt": "2.15.3",
-    "postcss": "^8.3.6"
+    "postcss": "^8.3.6",
+    "@nuxtjs/dotenv": "^1.4.1"
   }
 }
