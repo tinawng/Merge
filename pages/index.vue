@@ -1,15 +1,25 @@
 <template>
   <div class="page__container">
     <section class="overview"></section>
-    <section class="floor"></section>
+    <section class="merge_history">
+      <span class="h2">Latest Merge</span>
+      <ul class="mt-8">
+        <li v-for="token in latest_merges" :key="token.id" class="my-0.5">
+          <span class="text-sm">⚫</span>
+          <span class="font-medium opacity-90">#{{token.id}} =></span>
+          <span class="text-sm">⚫</span>
+          <span class="font-medium opacity-90">#{{token.merged_to}}</span>
+        </li>
+      </ul>
+    </section>
     <section class="leaderboard">
       <div class="leaderboard__header">
         <span class="h2">Global leaderboard</span>
         <div class="vr mx-6" />
         <span class="h2 opacity-20">Blue leaderboard</span>
-        <Button class="w-6 ml-auto" icon="arrow-left" disabled/>
+        <Button class="w-6 ml-auto" icon="arrow-left" disabled />
         <div class="vr mx-4" />
-        <Button class="w-6" icon="arrow-right"/>
+        <Button class="w-6" icon="arrow-right" />
       </div>
       <!-- <div v-for="token in leaderboard" :key="token.id" class="w-1/4 flex-shrink-0" >
         {{token.name}}
@@ -22,11 +32,11 @@
 <script>
 export default {
   async fetch() {
-    // this.leaderboard = (await this.$http.$get("https://api.opensea.io/api/v1/assets?order_direction=asc&offset=0&limit=12&collection=m")).assets;
-    // console.log(this.leaderboard[0]);
+    this.latest_merges = await this.$http.$get("latest_merges");
+    console.log(this.latest_merges);
   },
   data: () => ({
-    leaderboard: []
+    latest_merges: [],
   }),
 };
 </script>
@@ -44,7 +54,7 @@ section.overview {
   @apply col-span-3;
   @apply bg-black;
 }
-section.floor {
+section.merge_history {
   @apply bg-white;
 }
 section.leaderboard {
