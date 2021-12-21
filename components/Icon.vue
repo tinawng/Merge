@@ -7,12 +7,8 @@
     stroke-linecap="round"
     stroke-linejoin="round"
   >
-    <g v-if="!variant || variant == 'icon'">
-      <path
-        fill="currentColor"
-        stroke="transparent"
-        d="M16,9H19L14,16M10,9H14L12,17M5,9H8L10,16M15,4H17L19,7H16M11,4H13L14,7H10M7,4H9L8,7H5M6,2L2,8L12,22L22,8L18,2H6Z"
-      />
+    <g v-if="!variant || variant == 'eth'">
+      <path fill="currentColor" stroke="transparent" d="M12,1.75L5.75,12.25L12,16L18.25,12.25L12,1.75M5.75,13.5L12,22.25L18.25,13.5L12,17.25L5.75,13.5Z" />
     </g>
     <g v-else-if="variant == 'arrow-right'">
       <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>

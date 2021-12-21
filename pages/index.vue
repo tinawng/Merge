@@ -4,9 +4,17 @@
     <section class="merge_history">
       <span class="h2">Latest Merges</span>
       <ul class="mt-8">
-        <li v-for="token in latest_merges" :key="token.id">
-          <div class="pill">m({{token.mass}}) #{{token.id}}</div>
-          <div class="pill">m(21) #{{token.merged_to}}</div>
+        <li v-for="(token, i) in latest_merges" :key="token.id">
+          <div class="pill bg-gray" @click="openModal">m({{token.mass}}) #{{token.id}}</div>
+          <icon variant="circle" class="w-1.5 animate-ping-slow" :style="`--delay: ${0.0+i/2}s`" />
+          <icon variant="circle" class="w-1.5 animate-ping-slow" :style="`--delay: ${0.4+i/2}s`" />
+          <div class="flex text-sm tracking-wider">
+            <div class="pt-1">{{token.sale_price.toFixed(4)}}</div>
+            <icon class="w-5 text-gray" />
+          </div>
+          <icon variant="circle" class="w-2 animate-ping-slow text-blue" :style="`--delay: ${0.8+i/2}s`" />
+          <icon variant="circle" class="w-2.5 animate-ping-slow text-blue" :style="`--delay: ${1.0+i/2}s`" />
+          <div class="pill bg-blue" @click="openModal">m(21) #{{token.merged_to}}</div>
         </li>
       </ul>
     </section>
@@ -34,14 +42,22 @@ export default {
   },
   data: () => ({
     latest_merges: [],
+
+    contract: "0xc3f8a0f5841abff777d3eefa5047e8d413a1c9ab",
   }),
+  methods: {
+    openModal() {
+      console.log("TODO");
+    },
+  },
 };
 </script>
 
 <style lang="postcss">
 .page__container {
   @apply h-screen;
-  @apply grid grid-cols-3 grid-rows-2;
+  @apply grid grid-rows-2;
+  grid-template-columns: 36rem 1fr 1fr;
 }
 
 section {
@@ -53,33 +69,17 @@ section.overview {
 }
 section.merge_history {
   @apply bg-white;
-  @apply overflow-scroll;
+  @apply overflow-hidden;
   @apply transition-colors;
 }
 section li {
-  @apply p-4;
-  @apply flex items-center;
+  @apply py-4;
+  @apply flex justify-between items-center;
 }
 .pill {
-  @apply relative;
-  @apply p-2;
-  @apply bg-blue rounded-full;
-  @apply text-sm text-white text-opacity-80;
-  transform-style: preserve-3d;
-
-}
-.pill:before {
-  content: 'opensea';
-  @apply absolute top-0 left-0 -z-1;
-  @apply w-full h-full;
-  @apply pt-1 pb-px;
-  @apply bg-blue bg-opacity-10 rounded-full;
-  @apply text-blue text-center whitespace-nowrap;
-  @apply transition-transform;
-  transform: translateZ(-1px);
-}
-.pill:hover:before {
-  transform: translateY(50%);
+  @apply px-5 py-2;
+  @apply rounded-full;
+  @apply text-sm text-white text-opacity-80 tracking-wider;
 }
 
 section.leaderboard {
