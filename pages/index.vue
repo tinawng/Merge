@@ -2,13 +2,11 @@
   <div class="page__container">
     <section class="overview"></section>
     <section class="merge_history">
-      <span class="h2">Latest Merge</span>
+      <span class="h2">Latest Merges</span>
       <ul class="mt-8">
-        <li v-for="token in latest_merges" :key="token.id" class="my-0.5">
-          <span class="text-sm">⚫</span>
-          <span class="font-medium opacity-90">#{{token.id}} =></span>
-          <span class="text-sm">⚫</span>
-          <span class="font-medium opacity-90">#{{token.merged_to}}</span>
+        <li v-for="token in latest_merges" :key="token.id">
+          <div class="pill">m({{token.mass}}) #{{token.id}}</div>
+          <div class="pill">m(21) #{{token.merged_to}}</div>
         </li>
       </ul>
     </section>
@@ -33,7 +31,6 @@
 export default {
   async fetch() {
     this.latest_merges = await this.$http.$get("latest_merges");
-    console.log(this.latest_merges);
   },
   data: () => ({
     latest_merges: [],
@@ -44,7 +41,7 @@ export default {
 <style lang="postcss">
 .page__container {
   @apply h-screen;
-  @apply grid grid-cols-3;
+  @apply grid grid-cols-3 grid-rows-2;
 }
 
 section {
@@ -56,7 +53,35 @@ section.overview {
 }
 section.merge_history {
   @apply bg-white;
+  @apply overflow-scroll;
+  @apply transition-colors;
 }
+section li {
+  @apply p-4;
+  @apply flex items-center;
+}
+.pill {
+  @apply relative;
+  @apply p-2;
+  @apply bg-blue rounded-full;
+  @apply text-sm text-white text-opacity-80;
+  transform-style: preserve-3d;
+
+}
+.pill:before {
+  content: 'opensea';
+  @apply absolute top-0 left-0 -z-1;
+  @apply w-full h-full;
+  @apply pt-1 pb-px;
+  @apply bg-blue bg-opacity-10 rounded-full;
+  @apply text-blue text-center whitespace-nowrap;
+  @apply transition-transform;
+  transform: translateZ(-1px);
+}
+.pill:hover:before {
+  transform: translateY(50%);
+}
+
 section.leaderboard {
   @apply col-span-2;
   @apply grid grid-rows-2;
