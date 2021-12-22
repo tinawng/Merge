@@ -5,7 +5,7 @@
       <span class="h2">Latest Merges</span>
       <ul class="mt-8">
         <li v-for="(token, i) in latest_merges" :key="token.id">
-          <div class="pill bg-gray" @click="openModal">m({{token.mass}}) #{{token.id}}</div>
+          <div class="pill bg-gray" @click="openModal(token)">m({{token.mass}}) #{{token.id}}</div>
           <icon variant="circle" class="w-1.5 animate-ping-slow" :style="`--delay: ${0.0+i/2}s`" />
           <icon variant="circle" class="w-1.5 animate-ping-slow" :style="`--delay: ${0.4+i/2}s`" />
           <div class="flex text-sm tracking-wider">
@@ -14,7 +14,7 @@
           </div>
           <icon variant="circle" class="w-2 animate-ping-slow text-blue" :style="`--delay: ${0.8+i/2}s`" />
           <icon variant="circle" class="w-2.5 animate-ping-slow text-blue" :style="`--delay: ${1.0+i/2}s`" />
-          <div class="pill bg-blue" @click="openModal">m(21) #{{token.merged_to}}</div>
+          <div class="pill bg-blue" @click="openModal(token.merged_to)">m(21) #{{token.merged_to}}</div>
         </li>
       </ul>
     </section>
@@ -31,6 +31,8 @@
         {{token.name}}
         <img :src="token.image_url" alt="">
       </div> -->
+
+      <modals-merge-token v-click-outside="closeModal" :show="modal_show" :content="modal_content" />
     </section>
   </div>
 </template>
@@ -41,13 +43,19 @@ export default {
     this.latest_merges = await this.$http.$get("latest_merges");
   },
   data: () => ({
+    contract: "0xc3f8a0f5841abff777d3eefa5047e8d413a1c9ab",
     latest_merges: [],
 
-    contract: "0xc3f8a0f5841abff777d3eefa5047e8d413a1c9ab",
+    modal_show: false,
+    modal_content: undefined,
   }),
   methods: {
-    openModal() {
-      console.log("TODO");
+    openModal(content) {
+      this.modal_show = true;
+      this.modal_content = content;
+    },
+    closeModal() {
+      this.modal_show = false;
     },
   },
 };
