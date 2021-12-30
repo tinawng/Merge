@@ -11,26 +11,51 @@ html {
   font-family: "Graphik";
 }
 
-h2, .h2 {
-  @apply text-2xl font-medium;
+:focus-visible {
+  outline: transparent !important;
+}
+:focus {
+  outline: transparent !important;
 }
 
-button, .pill {
+::-webkit-scrollbar {
+  @apply w-2.5;
+}
+::-webkit-scrollbar-track {
+  @apply bg-white bg-opacity-10 rounded-xl;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-white bg-opacity-70 hover:bg-opacity-100 rounded-xl;
+}
+
+h1, .h1 {
+  @apply text-4xl;
+}
+
+h2, .h2 {
+  @apply text-xl font-medium;
+}
+
+.button, .pill {
   @apply cursor-pointer select-none;
   @apply transition-all;
   transition-property: transform shadow;
 }
-button:hover, .pill:hover {
+.button:hover, .pill:hover {
   @apply transform -translate-y-1;
   @apply shadow-xl;
 }
-button:active, .pill:active {
+.button:active, .pill:active {
   @apply transform translate-y-0;
   @apply shadow;
 }
 
+a.link {
+  @apply border-b-2;
+}
+
 .vr {
-  @apply h-5 w-0.5 rounded-xl;
+  @apply h-5 w-px rounded-xl;
   @apply bg-white bg-opacity-10;
 }
 

@@ -8,6 +8,7 @@ module.exports = {
       'blue': '#33F',
       'red': '#F33',
       'yellow': '#FC3',
+      'transparent': 'transparent'
     },
     extend: {
       fontSize: {
