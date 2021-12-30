@@ -1,6 +1,7 @@
 <template>
   <div class="button__container" :class="{'opacity-20': disabled}">
     <icon :variant="icon" :stroke="2" />
+    <slot/>
   </div>
 </template>
 

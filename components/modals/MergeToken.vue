@@ -13,7 +13,7 @@ export default {
       if (typeof this.content === 'object')
         return this.content;
       else if (typeof this.content === 'number') {
-        return await this.$http.$get("merge_token/" + this.content);
+        return await this.$http.$get("token_history/" + this.content);
       }
     }
   }
