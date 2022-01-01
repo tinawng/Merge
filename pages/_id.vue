@@ -11,15 +11,26 @@
       </div>
     </div>
     <div class="overview__content">
-      <cards-stats />
-      <cards-masses />
-      <cards-graphs-mass-repartition />
+      <cards-token :id="token_id" />
+      <cards-merged :id="token_id" />
+      <cards-graphs-merges :id="token_id" />
     </div>
   </section>
 </template>
 
 <script>
 export default {
+  data: () => ({
+    token_id: 27000,
+  }),
+
+  created() {
+    try {
+      this.token_id = Number(this.$route.params.id);
+    } catch (e) {
+      this.$router.push("/");
+    }
+  },
 };
 </script>
 
