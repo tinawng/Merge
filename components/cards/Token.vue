@@ -1,27 +1,20 @@
 <template>
   <div class="card__container">
     <merge-svg class="w-52 rounded-lg" :tier="merge.tier" :mass="merge.mass" />
-    <div class="flex-grow flex flex-col" :class="[merge.merged ? 'justify-center' : 'justify-start pt-2']">
+    <div class="flex-grow flex flex-col justify-start py-3 pr-2">
       <div class="flex gap-1.5">
         <span class="text-xl font-semibold">m({{merge.mass}})</span>
         <span class="self-end ">#{{merge.id}}</span>
-        <span v-if="merge.merged" class="ml-auto p-1.5 bg-black text-white text-xs font-normal rounded">MERGED</span>
+        <!-- <span v-if="merge.merged" class="ml-auto p-1.5 bg-black text-white text-xs font-normal rounded">MERGED</span> -->
       </div>
       <p class="mt-2 ">Tier {{merge.tier}}</p>
       <p class="">Class {{merge.class}}</p>
       <p class="">Merges {{merge.merge || 0}}</p>
 
-      <p v-if="merge.merged_to" class="mt-3 ">
-        Merged into <a class="link" :href="`/${merge.merged_to}`">{{merge.merged_to}}</a>
-      </p>
-      <p v-if="merge.merged_on" class="">on {{formatDate(merge.merged_on)}}</p>
-      <p v-if="merge.sale_price" class="flex gap-0.5 items-center">
-        Sold for {{merge.sale_price.toFixed(3)}} <icon class="w-4" variant="eth" />
-      </p>
-
-      <div class="absolute bottom-2 right-2 flex gap-1">
+      <p class="mt-auto flex items-end gap-1">
+        <span v-if="merge.merged" class="h-fit w-fit px-2 py-1.5 bg-black text-white text-xs font-normal rounded">MERGED</span>
         <a
-          class="h-8 w-8 flex justify-center button bg-white rounded-full"
+          class="h-8 w-8 ml-auto flex justify-center button bg-white rounded-full"
           :href="`https://opensea.io/assets/0xc3f8a0f5841abff777d3eefa5047e8d413a1c9ab/${merge.id}`"
           target="_blank"
         >
@@ -34,7 +27,7 @@
         >
           <img src="~/assets/svgs/nifty.svg" alt="opensea" />
         </a>
-      </div>
+      </p>
     </div>
   </div>
 </template>
@@ -44,7 +37,7 @@ export default {
   async fetch() {
     this.merge = await this.$http.$get(`token/${this.id}`);
   },
-  
+
   props: {
     id: Number,
   },

@@ -2,20 +2,20 @@
   <div class="card__container">
     <div class="card__title">Merged</div>
     <div class="card__content">
-      <div class="card__content__row">
+      <div v-if="merge.merged_to" class="card__content__row">
         <icon class="card__icon dark bg-white" :stroke="2" variant="minimize" />
         <span class="text-xl">
           Merged into <a class="link" :href="`/${merge.merged_to}`">{{merge.merged_to}}</a>
         </span>
       </div>
-      <div class="card__content__row">
+      <div v-if="merge.merged_on" class="card__content__row">
         <icon class="card__icon dark bg-white" :stroke="2" variant="clock" />
         <span class="text-xl">Merged on {{formatDate(merge.merged_on)}}</span>
         <span class="w-full -mt-0.5 ml-10 text-sm text-white text-opacity-40">
           Last {{life_span.days}}d {{life_span.hours}}h
         </span>
       </div>
-      <div class="card__content__row -mt-4">
+      <div v-if="merge.sale_price" class="card__content__row -mt-4">
         <icon class="card__icon dark bg-white" :stroke="2" variant="eth" />
         <span class="text-xl"> Sold for {{merge.sale_price}} </span>
         <icon class="-ml-1.5 w-5" variant="eth" />

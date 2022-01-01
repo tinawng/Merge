@@ -2,22 +2,24 @@
   <div class="page__container">
     <section class="overview">
       <div class="overview__header">
-        <div class="flex gap-16">
+        <div class="flex justify-between">
           <h1 class="text-white">Merge.</h1>
           <ui-input />
         </div>
         <div></div>
-        <div>date</div>
+        <div class="text-right">
+          <span class="text-white">button back to overview</span>
+        </div>
       </div>
       <div class="overview__content">
         <cards-token :id="16112" />
         <cards-merged :id="16112" />
+        <cards-graphs-merges :id="23780" />
       </div>
-
       <!-- <div class="overview__content">
         <cards-stats />
         <cards-masses />
-        <cards-graph />
+        <cards-graphs-mass-repartition />
       </div> -->
     </section>
     <section class="merge_history">
@@ -96,8 +98,10 @@ section.overview {
   @apply bg-black;
 }
 .overview__header {
+  @apply grid grid-cols-3 gap-8;
 }
 .overview__content {
+  @apply mt-8;
   @apply grid grid-cols-3 gap-8;
 }
 
