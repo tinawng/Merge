@@ -11,8 +11,8 @@
 // https://etherscan.io/address/0xc3f8a0f5841abff777d3eefa5047e8d413a1c9ab#code#F2#L91
 export default {
   props: {
-    tier: Number,
-    mass: Number,
+    tier: { type: Number, default: 1 },
+    mass: { type: Number, default: 1 },
     alpha_mass: { type: Number, default: 12121 },
   },
   data: () => ({ max_radius: 988 }), // Instead of 1000 for aesthetic reasons 💆‍♀️
