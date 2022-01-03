@@ -76,7 +76,7 @@ export default {
 
     for (let i = 0; i < tab.length; i++) {
       this.barChartData.datasets[0].data.push(tab[i].merges);
-      this.barChartData.labels.push((new Date(tab[i].timestamp)).toDateString());
+      this.barChartData.labels.push(new Date(tab[i].timestamp).toDateString().split(" ").slice(1, 3).join(" "));
     }
 
     let el = this.$refs["graph-container"];

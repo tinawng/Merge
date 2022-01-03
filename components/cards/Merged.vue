@@ -1,5 +1,5 @@
 <template>
-  <div class="card__container">
+  <div v-if="merge.merged" class="card__container">
     <div class="card__title">Merged</div>
     <div class="card__content">
       <div v-if="merge.merged_to" class="card__content__row">

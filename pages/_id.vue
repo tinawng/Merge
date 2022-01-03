@@ -25,11 +25,8 @@ export default {
   }),
 
   created() {
-    try {
-      this.token_id = Number(this.$route.params.id);
-    } catch (e) {
-      this.$router.push("/");
-    }
+    if (this.$route.params.id.match(/^\d+$/)) this.token_id = Number(this.$route.params.id);
+    else this.$router.push("/");
   },
 };
 </script>

@@ -9,7 +9,7 @@
       </div>
       <p class="mt-2 ">Tier {{merge.tier}}</p>
       <p class="">Class {{merge.class}}</p>
-      <p class="">Merges {{merge.merge || 0}}</p>
+      <p class="">Merges {{merge.merges || 0}}</p>
 
       <p class="mt-auto flex items-end gap-1">
         <span v-if="merge.merged" class="h-fit w-fit px-2 py-1.5 bg-black text-white text-xs font-normal rounded">MERGED</span>
