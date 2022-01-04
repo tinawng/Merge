@@ -17,7 +17,7 @@ export default {
       labels: [],
       datasets: [
         {
-          label: "tokens",
+          label: "merges",
           data: [],
           backgroundColor: "#33F3",
           borderColor: "#33F",
