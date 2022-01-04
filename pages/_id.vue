@@ -3,7 +3,7 @@
     <div class="overview__header">
       <div class="flex justify-between">
         <h1 class="text-white">Merge.</h1>
-        <ui-input />
+        <ui-input :placeholder="token_id"/>
       </div>
       <div></div>
       <div class="text-right">
