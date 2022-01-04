@@ -5,7 +5,7 @@
       <div v-if="merge.merged_to" class="card__content__row">
         <icon class="card__icon dark bg-white" :stroke="2" variant="minimize" />
         <span class="text-xl">
-          Merged into <a class="link" :href="`/${merge.merged_to}`">{{merge.merged_to}}</a>
+          Merged into <NuxtLink tag="a" class="link" :to="`/${merge.merged_to}`">{{merge.merged_to}}</NuxtLink>
         </span>
       </div>
       <div v-if="merge.merged_on" class="card__content__row">
@@ -17,7 +17,7 @@
       </div>
       <div v-if="merge.sale_price" class="card__content__row -mt-4">
         <icon class="card__icon dark bg-white" :stroke="2" variant="eth" />
-        <span class="text-xl"> Sold for {{merge.sale_price}} </span>
+        <span class="text-xl">Sold for {{merge.sale_price}}</span>
         <icon class="-ml-1.5 w-5" variant="eth" />
       </div>
     </div>
