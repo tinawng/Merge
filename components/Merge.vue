@@ -2,7 +2,6 @@
   <div class="merge__container">
     <merge-svg
       class="h-full rounded-lg"
-      :class="[tier==3 ? 'border border-black border-opacity-20' : '']"
       :tier="tier"
       :mass="mass"
     />

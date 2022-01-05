@@ -9,14 +9,14 @@
           <span class="text-sm text-white text-opacity-40">tier 4 tokens</span>
         </div>
         <div class="card__content__row">
-          <icon class="card__icon text-blue" variant="circle" />
-          <span class="text-xl">{{tiers_count[2]}}</span>
-          <span class="text-sm text-white text-opacity-40"> tier 3 tokens</span>
-        </div>
-        <div class="card__content__row">
           <icon class="card__icon text-yellow" variant="circle" />
           <span class="text-xl">{{tiers_count[1]}}</span>
           <span class="text-sm text-white text-opacity-40">tier 2 tokens</span>
+        </div>
+        <div class="card__content__row">
+          <icon class="card__icon text-blue" variant="circle" />
+          <span class="text-xl">{{tiers_count[2]}}</span>
+          <span class="text-sm text-white text-opacity-40"> tier 3 tokens</span>
         </div>
       </div>
       <div class="flex flex-col justify-end text-sm text-white text-opacity-40 text-right">
