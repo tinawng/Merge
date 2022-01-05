@@ -55,6 +55,11 @@
 
 <script>
 export default {
+  data: () => ({
+    mass_repartition: [{}, {}, {}],
+    tiers_count: [27858, 92, 42, 5],
+  }),
+  
   async fetch() {
     let { tiers_count, total_mass } = await this.$http.$get("latest_snapshot");
     this.tiers_count = tiers_count;
@@ -71,11 +76,6 @@ export default {
       { value: (blue_mass / total_mass) * 100, color: "blue" },
     ];
   },
-
-  data: () => ({
-    mass_repartition: [{}, {}, {}],
-    tiers_count: [27858, 92, 42, 5],
-  }),
 };
 </script>
 

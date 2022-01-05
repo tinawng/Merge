@@ -26,10 +26,6 @@
 
 <script>
 export default {
-  async fetch() {
-    this.merge = await this.$http.$get(`token/${this.id}`);
-  },
-
   props: {
     id: Number,
   },
@@ -47,6 +43,10 @@ export default {
 
       return { days: dd, hours: hh };
     },
+  },
+
+  async fetch() {
+    this.merge = await this.$http.$get(`token/${this.id}`);
   },
 
   methods: {

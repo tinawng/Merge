@@ -18,25 +18,9 @@
         </li>
       </ul>
     </section>
-    <section class="leaderboard">
-      <div class="leaderboard__header">
-        <span class="h2">Global leaderboard</span>
-        <div class="vr mx-6" />
-        <span class="h2 opacity-20">Blue leaderboard</span>
-        <button-icon class="w-6 ml-auto" icon="arrow-left" disabled />
-        <div class="vr mx-4" />
-        <button-icon class="w-6" icon="arrow-right" />
-      </div>
-
-      <div class="leaderboard__content">
-        <merge v-for="i in 100" :key="i" class="w-24" :id="i" />
-      </div>
-
-      <!-- <div v-for="token in leaderboard" :key="token.id" class="w-1/4 flex-shrink-0" >
-        {{token.name}}
-        <img :src="token.image_url" alt="">
-      </div> -->
-    </section>
+    
+    <sections-leaderboard/>
+    
     <!-- <modals-merge-token v-click-outside="closeModal" :show="modal_show" :content="modal_content" /> -->
   </div>
 </template>
@@ -74,7 +58,6 @@ section {
   @apply p-8;
 }
 
-
 section.merge_history {
   @apply bg-white;
   @apply overflow-hidden;
@@ -88,21 +71,5 @@ section li {
   @apply px-5 py-2;
   @apply rounded-full;
   @apply text-sm text-white text-opacity-80 tracking-wider;
-}
-
-section.leaderboard {
-  @apply col-span-2;
-  @apply pb-14; /* scrollbar padding */
-  @apply bg-blue;
-}
-.leaderboard__header {
-  @apply flex items-center;
-  @apply text-white text-opacity-80;
-}
-.leaderboard__content {
-  @apply h-full;
-  @apply mt-4;
-  @apply flex items-center flex-wrap gap-6;
-  @apply overflow-y-scroll;
 }
 </style>

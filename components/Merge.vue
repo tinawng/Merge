@@ -12,18 +12,9 @@
 <script>
 export default {
   props: {
-    id: Number,
+    tier: Number,
+    mass: Number,
   },
-  data: () => ({
-    tier: undefined,
-    mass: undefined,
-  }),
-
-  async fetch() {
-    let merge = await this.$http.$get(`token/${this.id}`);
-    this.tier = merge.tier;
-    this.mass = merge.mass;
-  }
 };
 </script>
 

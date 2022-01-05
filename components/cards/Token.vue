@@ -34,16 +34,16 @@
 
 <script>
 export default {
-  async fetch() {
-    this.merge = await this.$http.$get(`token/${this.id}`);
-  },
-
   props: {
     id: Number,
   },
   data: () => ({
     merge: {},
   }),
+  
+  async fetch() {
+    this.merge = await this.$http.$get(`token/${this.id}`);
+  },
 
   methods: {
     formatDate(merged_on) {
