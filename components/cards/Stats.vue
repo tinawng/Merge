@@ -25,7 +25,7 @@
       <div class="card__content__row">
         <icon class="card__icon bg-blue" variant="eth" />
         <span class="text-xl">{{price_floor}}</span>
-        <span class="text-sm text-white text-opacity-40">floor</span>
+        <span class="text-sm text-white text-opacity-40">eth floor</span>
       </div>
       <div class="card__content__row">
         <icon class="card__icon dark bg-yellow" variant="user" :stroke="2" />
