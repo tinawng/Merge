@@ -3,11 +3,13 @@
     <div class="overview__header">
       <div class="flex justify-between">
         <h1 class="text-white">Merge.</h1>
-        <ui-input :placeholder="token_id"/>
+        <ui-input :placeholder="token_id" />
       </div>
       <div></div>
-      <div class="text-right">
-        <span class="text-white">button back to overview</span>
+      <div class="flex justify-end">
+        <Nuxt-Link to="/">
+          <button class=""><icon class="w-6" variant="return"/></button>
+        </Nuxt-Link>
       </div>
     </div>
     <div class="overview__content">

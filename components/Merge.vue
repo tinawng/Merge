@@ -31,7 +31,7 @@ export default {
 
 <style lang="postcss" scoped>
 .merge__container {
-  @apply transition-all;
+  @apply cursor-pointer;
 }
 .ii {
   @apply mt-1;

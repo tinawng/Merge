@@ -7,7 +7,6 @@
       </div>
       <div></div>
       <div class="text-right">
-        <span class="text-white">button back to overview</span>
       </div>
     </div>
     <div class="overview__content">
