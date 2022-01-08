@@ -22,7 +22,7 @@ export default {
           backgroundColor: "#33F3",
           borderColor: "#33F",
           borderWidth: 2,
-          pointRadius: 1,
+          pointRadius: 1.5,
         },
       ],
     },
@@ -51,7 +51,6 @@ export default {
           {
             ticks: {
               beginAtZero: true,
-              min: 0,
               stepSize: 1,
             },
             gridLines: {
@@ -87,7 +86,7 @@ export default {
 
 <style lang="postcss" scoped>
 .card__container {
-  @apply h-4/5;
+  height: calc(100% - 0.75rem);
 }
 .card__title {
   @apply pb-2;

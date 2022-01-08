@@ -1,14 +1,9 @@
 <template>
   <section class="section__container">
     <div class="section__header">
-      <span class="h2" :class="{'opacity-20': index != 'mass'}" @click="index = 'mass'">Global leaderboard</span>
-      <div class="vr mx-6" />
-      <span class="h2" :class="{'opacity-20': index != 'blue'}" @click="index = 'blue'">Blue leaderboard</span>
-      <div class="vr mx-6" />
-      <span class="h2" :class="{'opacity-20': index != 'merges'}" @click="index = 'merges'">Merges leaderboard</span>
-      <button-icon class="w-6 ml-auto" icon="arrow-left" disabled />
-      <div class="vr mx-4" />
-      <button-icon class="w-6" icon="arrow-right" />
+      <span class="h2 pr-4" :class="{'opacity-20': index != 'mass'}" @click="index = 'mass'">Global leaderboard</span>
+      <span class="h2 px-4 border-l border-white border-opacity-20 text-white" :class="{'text-opacity-20': index != 'blue'}" @click="index = 'blue'">Blue leaderboard</span>
+      <span class="h2 px-4 border-l border-white border-opacity-20 text-white" :class="{'text-opacity-20': index != 'merges'}" @click="index = 'merges'">Merges leaderboard</span>
     </div>
 
     <div class="section__content">
@@ -44,6 +39,7 @@ export default {
 .section__header {
   @apply flex items-center;
   @apply text-white text-opacity-80;
+  @apply cursor-pointer;
 }
 .section__content {
   @apply h-full;

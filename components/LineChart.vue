@@ -7,7 +7,6 @@ export default {
   watch: {
     data: function () {
       this.renderChart(this.data, this.options);
-      console.log("react");
     },
     options: function () {
       this.renderChart(this.data, this.options);

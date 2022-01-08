@@ -1,6 +1,18 @@
 <template>
   <div class="card__container">
-    <div class="card__title">Token per mass</div>
+    <div class="card__title">
+      <span>Token per mass</span>
+      <div class="flex items-center">
+        <button-icon class="w-5 ml-auto" icon="arrow-left" :disabled="chart_bound_min == 0" @click.native="previous" />
+        <div class="vr mx-4" />
+        <button-icon
+          class="w-5"
+          icon="arrow-right"
+          :disabled="chart_bound_max > mass_repartition.length"
+          @click.native="next"
+        />
+      </div>
+    </div>
     <div ref="graph-container" class="h-full">
       <LineChart v-if="chart_height" :data="barChartData" :options="barChartOptions" :height="chart_height" />
     </div>
@@ -10,7 +22,11 @@
 <script>
 export default {
   data: () => ({
+    mass_repartition: [],
+
     chart_height: 0,
+    chart_bound_min: 0,
+    chart_bound_max: 14,
 
     barChartData: {
       labels: [],
@@ -50,9 +66,9 @@ export default {
           {
             ticks: {
               beginAtZero: true,
-              max: 15000,
-              min: 0,
-              stepSize: 3000,
+              userCallback: (label) => {
+                return Math.floor(label) === label ? label : null;
+              },
             },
             gridLines: {
               display: true,
@@ -68,29 +84,52 @@ export default {
   async mounted() {
     this.barChartData.datasets[0].data = [];
     this.barChartData.labels = [];
-    
-    let tab = await this.$http.$get("mass_repartition");
-    for (let i = 0; i < 15; i++) {
-      this.barChartData.datasets[0].data.push(tab[i].count);
-      this.barChartData.labels.push(`m(${tab[i].mass})`);
+
+    this.mass_repartition = await this.$http.$get("mass_repartition");
+    for (let i = this.chart_bound_min; i < this.chart_bound_max; i++) {
+      this.barChartData.datasets[0].data.push(this.mass_repartition[i].count);
+      this.barChartData.labels.push(`m(${this.mass_repartition[i].mass})`);
     }
-    // this.barChartData.datasets[0].data = tab.slice(0, 10);
-    // let l = Array.from(Array(10).keys()).map((i) => `m(${++i})`);
-    // this.barChartData.labels = l;
 
     let el = this.$refs["graph-container"];
     this.chart_height = el.clientHeight;
+  },
+
+  methods: {
+    next() {
+      this.chart_bound_min += 14;
+      this.chart_bound_max += 14;
+      this.updateChartData();
+    },
+    previous() {
+      this.chart_bound_min -= 14;
+      this.chart_bound_max -= 14;
+      this.updateChartData();
+    },
+
+    updateChartData() {
+      this.barChartData.datasets[0].data = [];
+      this.barChartData.labels = [];
+
+      for (let i = this.chart_bound_min; i < this.chart_bound_max; i++) {
+        if (!this.mass_repartition[i]) continue;
+        this.barChartData.datasets[0].data.push(this.mass_repartition[i].count);
+        this.barChartData.labels.push(`m(${this.mass_repartition[i].mass})`);
+      }
+      this.barChartData = { ...this.barChartData };
+    },
   },
 };
 </script>
 
 <style lang="postcss" scoped>
 .card__container {
-  @apply h-4/5;
+  height: calc(100% - 0.75rem);
 }
 .card__title {
   @apply pb-2;
   @apply border-b border-white border-opacity-10;
+  @apply flex justify-between items-center;
   @apply text-xl text-white text-opacity-40;
 }
 </style>
