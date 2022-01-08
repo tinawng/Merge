@@ -1,5 +1,5 @@
 <template>
-  <div class="button__container" :class="{'opacity-20': disabled}">
+  <div class="button__container" :class="{'opacity-20 pointer-events-none': disabled}">
     <icon :variant="icon" :stroke="2" />
     <slot/>
   </div>
@@ -18,6 +18,7 @@ export default {
 .button__container {
   @apply relative;
   @apply rounded-full;
+  @apply cursor-pointer;
   @apply transition-colors;
   user-select: none;
 }
