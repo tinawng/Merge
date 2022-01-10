@@ -19,10 +19,8 @@
       </ul>
     </section> -->
 
-    <section-merges />
+    <sections-merges />
     <sections-leaderboard />
-
-    <!-- <modals-merge-token v-click-outside="closeModal" :show="modal_show" :content="modal_content" /> -->
   </div>
 </template>
 
@@ -35,16 +33,6 @@ export default {
     modal_show: false,
     modal_content: undefined,
   }),
-
-  methods: {
-    openModal(content) {
-      this.modal_show = true;
-      this.modal_content = content;
-    },
-    closeModal() {
-      this.modal_show = false;
-    },
-  },
 };
 </script>
 
