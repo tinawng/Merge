@@ -1,7 +1,7 @@
 <template>
   <div class="layout__container">
-    <Nuxt/>
-    <section class="merge_history">
+    <Nuxt />
+    <!-- <section class="merge_history">
       <span class="h2">Latest Merges</span>
       <ul class="mt-8">
         <li v-for="(token, i) in latest_merges" :key="token.id">
@@ -17,10 +17,11 @@
           <div class="pill bg-blue" @click="openModal(token.merged_to)">m(21) #{{token.merged_to}}</div>
         </li>
       </ul>
-    </section>
-    
-    <sections-leaderboard/>
-    
+    </section> -->
+
+    <section-merges />
+    <sections-leaderboard />
+
     <!-- <modals-merge-token v-click-outside="closeModal" :show="modal_show" :content="modal_content" /> -->
   </div>
 </template>
