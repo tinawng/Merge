@@ -86,7 +86,7 @@ export default {
 
 <style lang="postcss" scoped>
 .card__container {
-  height: calc(100% - 0.75rem);
+  height: calc(100% - 2rem);
 }
 .card__title {
   @apply pb-2;

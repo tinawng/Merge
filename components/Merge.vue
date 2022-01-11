@@ -1,7 +1,7 @@
 <template>
   <NuxtLink tag="div" class="merge__container" :to="`/${id}`">
     <merge-svg class="h-full rounded-lg" :tier="tier" :mass="mass" />
-    <div class="ii" :class="ii_bg">
+    <div class="ii" :class="bg_color">
       <span>m({{mass}})</span>
       <span>#{{id}}</span>
     </div>
@@ -21,7 +21,7 @@ export default {
   },
 
   computed: {
-    ii_bg: function () {
+    bg_color: function () {
       let color = this.tier == 4 ? 'red' : this.tier == 2 ? 'black' : this.tier == 3 ? 'blue' : 'black';
       return 'bg-' + color;
     },
