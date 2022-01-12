@@ -4,10 +4,10 @@
 
 <script>
 export default {
-  props: { mass: Number, Tier: Number },
+  props: { mass: Number, tier: Number },
   computed: {
     color: function () {
-      let color = this.tier == 4 ? "red" : this.tier == 2 ? "black" : this.tier == 3 ? "blue" : "black";
+      let color = this.tier == 4 ? "red" : this.tier == 2 ? "yellow" : this.tier == 3 ? "blue" : "black";
       return "bg-" + color;
     },
     size: function () {
