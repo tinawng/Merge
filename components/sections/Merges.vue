@@ -5,21 +5,23 @@
     </div>
     <div class="section__content">
       <div v-for="merge in latest_merges" :key="merge.id" class="section__content__row">
-        <div class="flex items-center gap-2">
+        <NuxtLink tag="div" :to="`/${merge.id}`" class="flex items-center gap-2 cursor-pointer">
           <span class="">m({{merge.mass}}) #{{merge.id}}</span>
           <merge-icon v-bind="merge" />
-        </div>
+        </NuxtLink>
         <div v-if="merge.sale_price">
-          <p class="flex gap-1">{{merge.sale_price}} <icon class="w-4" variant="eth"/></p>
-          <p v-if="merge.mass > 1" class="text-2xs">{{+parseFloat(((merge.sale_price/merge.mass)).toFixed(4))}} / m</p>
+          <p class="flex justify-center gap-1">{{merge.sale_price}} <icon class="w-4" variant="eth" /></p>
+          <p v-if="merge.mass > 1" class="-mt-0.5 text-2xs">
+            {{+parseFloat(((merge.sale_price/merge.mass)).toFixed(4))}} / m
+          </p>
         </div>
-        <div class="text-2xl">
+        <div class="text-xs">
           {{formatDate(merge.merged_on)}}
         </div>
-        <div class="flex items-center gap-2">
+        <NuxtLink tag="div" :to="`/${merge.merged_to.id}`" class="flex items-center gap-2 cursor-pointer">
           <merge-icon v-bind="merge.merged_to" />
           <span class="">m({{merge.merged_to.mass}}) #{{merge.merged_to.id}}</span>
-        </div>
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -38,7 +40,10 @@ export default {
   methods: {
     formatDate(merged_on) {
       let date = new Date(merged_on);
-      return date.toDateString().split(" ").slice(1, 3).join(" ") + ` ${date.getHours().toString().padStart(2, '0')}h${date.getMinutes().toString().padStart(2, '0')}`;
+      return (
+        date.toDateString().split(" ").slice(1, 3).join(" ") +
+        ` ${date.getHours().toString().padStart(2, "0")}h${date.getMinutes().toString().padStart(2, "0")}`
+      );
     },
   },
 };
