@@ -92,7 +92,7 @@ export default {
     }
 
     let el = this.$refs["graph-container"];
-    this.chart_height = el.clientHeight;
+    this.chart_height = el?.clientHeight || 200;
   },
 
   methods: {
