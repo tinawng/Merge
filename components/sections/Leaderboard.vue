@@ -47,4 +47,14 @@ export default {
   @apply flex items-center flex-wrap gap-x-6 gap-y-2;
   @apply overflow-y-scroll;
 }
+
+::-webkit-scrollbar {
+  @apply w-2.5;
+}
+::-webkit-scrollbar-track {
+  @apply bg-white bg-opacity-10 rounded-xl;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-white bg-opacity-70 hover:bg-opacity-100 rounded-xl;
+}
 </style>

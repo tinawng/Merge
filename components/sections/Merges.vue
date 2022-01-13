@@ -52,10 +52,11 @@ export default {
 <style lang="postcss">
 .section__container {
   @apply bg-white;
+  @apply pb-14;
 }
 .section__content {
   @apply h-full;
-  @apply mt-4;
+  @apply mt-4 pr-4;
   @apply overflow-y-scroll;
 }
 .section__content__row {
@@ -64,4 +65,15 @@ export default {
   @apply bg-gray bg-opacity-5 rounded-lg;
   @apply flex justify-between items-center;
 }
+
+::-webkit-scrollbar {
+  @apply w-2.5;
+}
+::-webkit-scrollbar-track {
+  @apply bg-gray bg-opacity-5 rounded-xl;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-black bg-opacity-50 hover:bg-opacity-100 rounded-xl;
+}
+
 </style>
