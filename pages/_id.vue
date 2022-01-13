@@ -8,7 +8,7 @@
       <div></div>
       <div class="flex justify-end">
         <Nuxt-Link to="/">
-          <button class=""><icon class="w-6" variant="return"/></button>
+          <button class=""><icon class="w-6" variant="return" /></button>
         </Nuxt-Link>
       </div>
     </div>

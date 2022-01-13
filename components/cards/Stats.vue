@@ -22,11 +22,11 @@
         <span class="text-xl">{{total_mass}}</span>
         <span class="text-sm text-white text-opacity-40">global mass</span>
       </div>
-      <div class="card__content__row">
+      <NuxtLink tag="div" to="/history?stat=os_price_floor" class="card__content__row">
         <icon class="card__icon bg-blue" variant="eth" />
         <span class="text-xl">{{price_floor}}</span>
         <span class="text-sm text-white text-opacity-40">eth floor</span>
-      </div>
+      </NuxtLink>
       <div class="card__content__row">
         <icon class="card__icon dark bg-yellow" variant="user" :stroke="2" />
         <span class="text-xl">{{owner_count}}</span>
@@ -74,7 +74,11 @@ export default {
   @apply grid grid-cols-2 gap-y-6;
 }
 .card__content__row {
+  @apply w-fit;
   @apply flex items-center gap-2;
+}
+.card__content__row:hover {
+  @apply bg-white bg-opacity-5;
 }
 .card__icon {
   @apply w-8;

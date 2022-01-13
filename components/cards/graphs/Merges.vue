@@ -70,7 +70,7 @@ export default {
 
     let tab = await this.$http.$get(`token_history/${this.id}`);
 
-    // Remove useless records (only keep record when merges count change)
+    // Remove useless records (only keep record where merges count change)
     tab = tab.filter((value, index, self) => index === self.findIndex((t) => t.merges === value.merges));
 
     for (let i = 0; i < tab.length; i++) {
@@ -86,7 +86,7 @@ export default {
 
 <style lang="postcss" scoped>
 .card__container {
-  height: calc(100% - 2rem);
+  height: calc(100% - 2.5rem);
 }
 .card__title {
   @apply pb-2;
