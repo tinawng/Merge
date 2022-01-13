@@ -25,6 +25,9 @@ module.exports = {
       zIndex: {
         '-1': '-1',
       },
+      margin: {
+        '13': '3.25rem',
+      },
       animation: {
         'ping-slow': 'ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite var(--delay); opacity: 0;'
       },
@@ -34,7 +37,13 @@ module.exports = {
           '75%, 100%': { transform: 'scale(2)', opacity: 0 }
         }
       }
-    }
+    },
+    screens: {
+      'sm': '1024px',
+      'md': '1081px',
+      'lg': '1920px',
+      'xl': '2560px',
+    },
   },
   variants: {
   },

@@ -22,12 +22,12 @@ export default {
 <style lang="postcss">
 .layout__container {
   @apply h-screen;
-  @apply grid grid-rows-2;
+  @apply md:grid grid-rows-2;
   grid-template-columns: 36rem 1fr 1fr;
 }
 
 section {
-  @apply p-8;
+  @apply p-4 md:p-8;
 }
 
 section.merge_history {

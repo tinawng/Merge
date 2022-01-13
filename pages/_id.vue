@@ -15,7 +15,7 @@
     <div class="overview__content">
       <cards-token :id="token_id" />
       <cards-merged :id="token_id" />
-      <cards-graphs-merges :id="token_id" />
+      <!-- <cards-graphs-merges :id="token_id" /> -->
     </div>
   </section>
 </template>
@@ -42,7 +42,7 @@ section.overview {
   @apply grid grid-cols-3 gap-8;
 }
 .overview__content {
-  @apply mt-8;
+  @apply mt-6;
   @apply grid grid-cols-3 gap-8;
 }
 </style>

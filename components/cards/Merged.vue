@@ -11,7 +11,7 @@
       <div v-if="merge.merged_on" class="card__content__row">
         <icon class="card__icon dark bg-white" :stroke="2" variant="clock" />
         <span class="text-xl">Merged on {{formatDate(merge.merged_on)}}</span>
-        <span class="w-full -mt-0.5 ml-10 text-sm text-white text-opacity-40">
+        <span class="w-full -mt-0.5 ml-10 lg:ml-13 text-sm text-white text-opacity-40">
           Last {{life_span.days}}d {{life_span.hours}}h
         </span>
       </div>
@@ -72,11 +72,11 @@ export default {
 }
 .card__content__row {
   @apply mb-8;
-  @apply flex items-center flex-wrap gap-x-2;
+  @apply flex items-center flex-wrap gap-x-2 lg:gap-x-3;
 }
 .card__icon {
-  @apply w-8;
-  @apply p-1.5;
+  @apply w-8 lg:w-10;
+  @apply p-1.5 lg:p-2;
   @apply border border-white border-opacity-10 rounded-full;
 }
 .card__icon.dark {

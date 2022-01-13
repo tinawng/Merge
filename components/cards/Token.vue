@@ -1,6 +1,6 @@
 <template>
   <div class="card__container">
-    <merge-svg class="w-52 rounded-lg" :tier="merge.tier" :mass="merge.mass" />
+    <merge-svg class="md:w-56 lg:w-80 xl:w-96 rounded-lg" :tier="merge.tier" :mass="merge.mass" />
     <div class="flex-grow flex flex-col justify-start py-3 pr-2">
       <div class="flex gap-1.5">
         <span class="text-xl font-semibold">m({{merge.mass}})</span>
@@ -58,10 +58,11 @@ export default {
 <style lang="postcss" scoped>
 .card__container {
   @apply relative;
-  @apply h-56 w-full;
+  @apply w-full;
   @apply p-2;
   @apply bg-white rounded-xl;
   @apply flex gap-4;
   @apply font-medium;
+  flex-grow: 1;
 }
 </style>

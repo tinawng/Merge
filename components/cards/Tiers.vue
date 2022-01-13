@@ -2,7 +2,7 @@
   <div class="card__container">
     <div class="card__title">Tiers</div>
     <div class="card__content">
-      <div class="flex-grow flex flex-col gap-6">
+      <div class="flex-grow flex flex-col gap-y-6 lg:gap-y-8">
         <div class="card__content__row">
           <icon class="card__icon text-red" variant="circle" />
           <span class="text-xl">{{tiers_count[3]}}</span>
@@ -94,11 +94,11 @@ export default {
   @apply flex gap-6;
 }
 .card__content__row {
-  @apply flex items-center gap-2;
+  @apply flex items-center gap-2 lg:gap-3;
 }
 .card__icon {
-  @apply w-8;
-  @apply p-1.5;
+  @apply w-8 lg:w-10;
+  @apply p-1.5 lg:p-2;
   @apply border border-white border-opacity-10 rounded-full;
 }
 .card__icon.dark {

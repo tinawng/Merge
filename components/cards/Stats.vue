@@ -4,33 +4,33 @@
     <div class="card__content">
       <div class="card__content__row">
         <icon class="card__icon" variant="circle" />
-        <span class="text-xl">{{token_count}}</span>
-        <span class="text-sm text-white text-opacity-40">tokens</span>
+        <span class="card__content__value">{{token_count}}</span>
+        <span class="card__content__label">tokens</span>
       </div>
       <div class="card__content__row">
         <icon class="card__icon bg-red" variant="minimize" :stroke="2" />
-        <span class="text-xl">{{merged_count}}</span>
-        <span class="text-sm text-white text-opacity-40">merged</span>
+        <span class="card__content__value">{{merged_count}}</span>
+        <span class="card__content__label">merged</span>
       </div>
       <div class="card__content__row">
         <icon class="card__icon dark bg-white" variant="award" :stroke="2" />
-        <span class="text-xl">{{alpha_mass}}</span>
-        <span class="text-sm text-white text-opacity-40">alpha mass</span>
+        <span class="card__content__value">{{alpha_mass}}</span>
+        <span class="card__content__label">alpha mass</span>
       </div>
       <div class="card__content__row">
         <icon class="card__icon" variant="globe" />
-        <span class="text-xl">{{total_mass}}</span>
-        <span class="text-sm text-white text-opacity-40">global mass</span>
+        <span class="card__content__value">{{total_mass}}</span>
+        <span class="card__content__label">global mass</span>
       </div>
       <NuxtLink tag="div" to="/history?stat=os_price_floor" class="card__content__row">
         <icon class="card__icon bg-blue" variant="eth" />
-        <span class="text-xl">{{price_floor}}</span>
-        <span class="text-sm text-white text-opacity-40">eth floor</span>
+        <span class="card__content__value">{{price_floor}}</span>
+        <span class="card__content__label">eth floor</span>
       </NuxtLink>
       <div class="card__content__row">
         <icon class="card__icon dark bg-yellow" variant="user" :stroke="2" />
-        <span class="text-xl">{{owner_count}}</span>
-        <span class="text-sm text-white text-opacity-40">owners</span>
+        <span class="card__content__value">{{owner_count}}</span>
+        <span class="card__content__label">owners</span>
       </div>
     </div>
   </div>
@@ -46,9 +46,11 @@ export default {
     price_floor: 312729,
     token_count: 312729,
   }),
-  
+
   async fetch() {
-    let { total_mass, owner_count, merged_count, os_price_floor, token_count } = await this.$http.$get("latest_snapshot");
+    let { total_mass, owner_count, merged_count, os_price_floor, token_count } = await this.$http.$get(
+      "latest_snapshot"
+    );
     this.total_mass = total_mass;
     this.owner_count = owner_count;
     this.merged_count = merged_count;
@@ -71,21 +73,27 @@ export default {
 }
 .card__content {
   @apply pt-8;
-  @apply grid grid-cols-2 gap-y-6;
+  @apply grid grid-cols-2 gap-y-6 lg:gap-y-8;
 }
 .card__content__row {
   @apply w-fit;
-  @apply flex items-center gap-2;
+  @apply flex items-center gap-2 lg:gap-3;
 }
 .card__content__row:hover {
   @apply bg-white bg-opacity-5;
 }
 .card__icon {
-  @apply w-8;
-  @apply p-1.5;
+  @apply w-6 md:w-8 lg:w-10;
+  @apply p-1 md:p-1.5 lg:p-2;
   @apply border border-white border-opacity-10 rounded-full;
 }
 .card__icon.dark {
   @apply text-black;
+}
+.card__content__value {
+  @apply text-xl;
+}
+.card__content__label {
+  @apply text-xs sm:text-sm text-white text-opacity-40;
 }
 </style>
