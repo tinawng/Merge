@@ -1,0 +1,33 @@
+.card__container {
+  @apply text-white;
+}
+.card__title {
+  @apply pb-2;
+  @apply border-b border-white border-opacity-10;
+  @apply text-xl text-white text-opacity-40;
+}
+.card__content {
+  @apply pt-8;
+}
+.card__content__row {
+  @apply flex items-center gap-2 lg:gap-3;
+  @apply transition-transform;
+}
+a.card__content__row:hover {
+  @apply bg-white bg-opacity-10 rounded-full pr-3;
+  @apply transform -translate-y-1;
+}
+.card__icon {
+  @apply w-6 md:w-8 lg:w-10;
+  @apply p-1 md:p-1.5 lg:p-2;
+  @apply border border-white border-opacity-10 rounded-full;
+}
+.card__icon.dark {
+  @apply text-black;
+}
+.card__content__value {
+  @apply text-xl;
+}
+.card__content__label {
+  @apply text-xs sm:text-sm text-white text-opacity-40;
+}

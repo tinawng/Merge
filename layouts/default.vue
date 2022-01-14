@@ -2,7 +2,7 @@
   <div class="layout__container">
     <Nuxt />
 
-    <sections-merges />
+    <sections-latest-merges />
     <sections-leaderboard />
   </div>
 </template>

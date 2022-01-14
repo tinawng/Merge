@@ -3,21 +3,21 @@
     <div class="card__title">Tiers</div>
     <div class="card__content">
       <div class="flex-grow flex flex-col gap-y-6 lg:gap-y-8">
-        <div class="card__content__row">
+        <NuxtLink tag="a" to="/history?stat=tiers_count" class="card__content__row">
           <icon class="card__icon text-red" variant="circle" />
           <span class="text-xl">{{tiers_count[3]}}</span>
           <span class="text-sm text-white text-opacity-40">tier 4 tokens</span>
-        </div>
-        <div class="card__content__row">
+        </NuxtLink>
+        <NuxtLink tag="a" to="/history?stat=tiers_count" class="card__content__row">
           <icon class="card__icon text-yellow" variant="circle" />
           <span class="text-xl">{{tiers_count[1]}}</span>
           <span class="text-sm text-white text-opacity-40">tier 2 tokens</span>
-        </div>
-        <div class="card__content__row">
+        </NuxtLink>
+        <NuxtLink tag="a" to="/history?stat=tiers_count" class="card__content__row">
           <icon class="card__icon text-blue" variant="circle" />
           <span class="text-xl">{{tiers_count[2]}}</span>
           <span class="text-sm text-white text-opacity-40"> tier 3 tokens</span>
-        </div>
+        </NuxtLink>
       </div>
       <div class="flex flex-col justify-end text-sm text-white text-opacity-40 text-right">
         <p>total</p>
@@ -59,7 +59,7 @@ export default {
     mass_repartition: [{}, {}, {}],
     tiers_count: [27858, 92, 42, 5],
   }),
-  
+
   async fetch() {
     let { tiers_count, total_mass } = await this.$http.$get("latest_snapshot");
     this.tiers_count = tiers_count;

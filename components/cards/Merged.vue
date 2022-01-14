@@ -4,21 +4,22 @@
     <div class="card__content">
       <div v-if="merge.merged_to" class="card__content__row">
         <icon class="card__icon dark bg-white" :stroke="2" variant="minimize" />
-        <span class="text-xl">
+        <span class="card__content__value">
           Merged into <NuxtLink tag="a" class="link" :to="`/${merge.merged_to}`">{{merge.merged_to}}</NuxtLink>
         </span>
       </div>
+      <div v-if="merge.sale_price" class="card__content__row">
+        <icon class="card__icon dark bg-white" :stroke="2" variant="eth" />
+        <span class="card__content__value">Sold for {{merge.sale_price}}</span>
+        <icon class="-ml-1.5 w-5" variant="eth" />
+        <span class="card__content__label">{{+parseFloat(((merge.sale_price/merge.mass)).toFixed(4))}} per mass</span>
+      </div>
       <div v-if="merge.merged_on" class="card__content__row">
         <icon class="card__icon dark bg-white" :stroke="2" variant="clock" />
-        <span class="text-xl">Merged on {{formatDate(merge.merged_on)}}</span>
-        <span class="w-full -mt-0.5 ml-10 lg:ml-13 text-sm text-white text-opacity-40">
+        <span class="card__content__value">Merged on {{formatDate(merge.merged_on)}}</span>
+        <span class="w-full -mt-2.5 ml-10 lg:ml-13 card__content__label">
           Last {{life_span.days}}d {{life_span.hours}}h
         </span>
-      </div>
-      <div v-if="merge.sale_price" class="card__content__row -mt-4">
-        <icon class="card__icon dark bg-white" :stroke="2" variant="eth" />
-        <span class="text-xl">Sold for {{merge.sale_price}}</span>
-        <icon class="-ml-1.5 w-5" variant="eth" />
       </div>
     </div>
   </div>
@@ -59,27 +60,12 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.card__container {
-  @apply text-white;
-}
-.card__title {
-  @apply pb-2;
-  @apply border-b border-white border-opacity-10;
-  @apply text-xl text-white text-opacity-40;
-}
+@import '~/assets/css/card.postcss';
+
 .card__content {
-  @apply pt-6;
+  @apply grid grid-cols-1 gap-y-6 lg:gap-y-8;
 }
 .card__content__row {
-  @apply mb-8;
-  @apply flex items-center flex-wrap gap-x-2 lg:gap-x-3;
-}
-.card__icon {
-  @apply w-8 lg:w-10;
-  @apply p-1.5 lg:p-2;
-  @apply border border-white border-opacity-10 rounded-full;
-}
-.card__icon.dark {
-  @apply text-black;
+  @apply flex-wrap;
 }
 </style>
