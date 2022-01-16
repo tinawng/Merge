@@ -12,7 +12,7 @@
         <icon class="card__icon dark bg-white" :stroke="2" variant="eth" />
         <span class="card__content__value">Sold for {{merge.sale_price}}</span>
         <icon class="-ml-1.5 w-5" variant="eth" />
-        <span class="card__content__label">{{+parseFloat(((merge.sale_price/merge.mass)).toFixed(4))}} per mass</span>
+        <span v-if="merge.mass > 1" class="card__content__label">{{+parseFloat(((merge.sale_price/merge.mass)).toFixed(4))}} per mass</span>
       </div>
       <div v-if="merge.merged_on" class="card__content__row">
         <icon class="card__icon dark bg-white" :stroke="2" variant="clock" />

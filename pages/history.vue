@@ -14,7 +14,7 @@
     </div>
     <div class="section__content">
       <cards-history />
-      <div ref="graph-container" class="col-span-2">
+      <div ref="graph-container" class="col-span-2" style="height: calc(100% - 2rem);">
         <LineChart
           v-if="chart_height"
           :data="chart_data"

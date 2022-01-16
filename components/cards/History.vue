@@ -3,12 +3,12 @@
     <div class="card__title">Stats History</div>
     <div class="card__content">
       <div class="card__content__row">
-        <icon class="card__icon dark bg-white" variant="plus" />
+        <icon class="card__icon dark bg-white" variant="arrow-up" :stroke="2" />
         <span class="text-xl">{{max}}</span>
         <span class="text-sm text-white text-opacity-40">eth</span>
       </div>
       <div class="card__content__row">
-        <icon class="card__icon dark bg-white" variant="minus" />
+        <icon class="card__icon dark bg-white" variant="arrow-down" :stroke="2" />
         <span class="text-xl">{{min}}</span>
         <span class="text-sm text-white text-opacity-40">eth</span>
       </div>

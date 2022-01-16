@@ -22,6 +22,14 @@
       <line x1="19" y1="12" x2="5" y2="12"></line>
       <polyline points="12 19 5 12 12 5"></polyline>
     </g>
+    <g v-else-if="variant == 'arrow-up'">
+      <line x1="12" y1="19" x2="12" y2="5"></line>
+      <polyline points="5 12 12 5 19 12"></polyline>
+    </g>
+    <g v-else-if="variant == 'arrow-down'">
+      <line x1="12" y1="5" x2="12" y2="19"></line>
+      <polyline points="19 12 12 19 5 12"></polyline>
+    </g>
     <g v-else-if="variant == 'circle'">
       <circle fill="currentColor" stroke="transparent" cx="12" cy="12" r="10"></circle>
     </g>
@@ -70,10 +78,11 @@
       <path d="M20 4v7a4 4 0 0 1-4 4H4"></path>
     </g>
     <g v-else-if="variant == 'plus'">
-      <line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
+      <line x1="12" y1="5" x2="12" y2="19"></line>
+      <line x1="5" y1="12" x2="19" y2="12"></line>
     </g>
     <g v-else-if="variant == 'minus'">
-     <line x1="5" y1="12" x2="19" y2="12"></line>
+      <line x1="5" y1="12" x2="19" y2="12"></line>
     </g>
   </svg>
 </template>

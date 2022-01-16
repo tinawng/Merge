@@ -15,7 +15,7 @@
     <div class="overview__content">
       <cards-token :id="token_id" />
       <cards-merged :id="token_id" />
-      <!-- <cards-graphs-merges :id="token_id" /> -->
+      <cards-graphs-merges :id="token_id" />
     </div>
   </section>
 </template>
