@@ -3,7 +3,7 @@
     <p>updated every 6h</p>
     <p class="flex gap-1">
       <span>want more? </span>
-      <a v-if="has_wallet" class="link cursor-pointer" @click="tr">support me</a>
+      <a v-if="has_wallet" class="link cursor-pointer" @click="walletTip">support me</a>
       <span v-else>
         support me
         <a class="link cursor-pointer" @click="copyAddr">
@@ -37,7 +37,7 @@ export default {
   },
 
   methods: {
-    async tr() {
+    async walletTip() {
       try {
         await ethereum.request({ method: "eth_requestAccounts" });
         this.donor_addr = ethereum.selectedAddress;
