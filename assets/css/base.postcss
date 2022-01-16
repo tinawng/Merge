@@ -76,6 +76,16 @@ a.link {
   @apply bg-white bg-opacity-10;
 }
 
+.slide-in-enter-active, .slide-in-leave-active {
+  transition-property: transform, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: .2s;
+}
+.slide-in-enter, .slide-in-leave-to {
+  transform: translateY(.3rem);
+  opacity: 0;
+}
+
 @font-face {
   font-family: 'Graphik';
   font-style: normal;
@@ -92,28 +102,3 @@ a.link {
   src: local(''),
        url('~assets/fonts/graphik/GraphikMedium.woff2') format('woff2');
 }
-
-/* @font-face {
-  font-family: 'Graphik';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local(''),
-       url('~assets/fonts/graphik/GraphikRegular.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Graphik';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local(''),
-       url('~assets/fonts/graphik/GraphikSemiBold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Graphik';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local(''),
-       url('~assets/fonts/graphik/GraphikBold.woff2') format('woff2');
-} */

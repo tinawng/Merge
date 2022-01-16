@@ -5,10 +5,7 @@
         <h1 class="text-white">Merge.</h1>
         <ui-input />
       </div>
-      <div class="text-xs text-white text-opacity-30">
-        <p>updated every 6h</p>
-        <p>want more? donate <a class="link" href="">here</a></p>
-      </div>
+      <tip/>
       <div class="text-right">
       </div>
     </div>
