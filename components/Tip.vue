@@ -1,5 +1,5 @@
 <template>
-  <div class="text-xs text-white text-opacity-30">
+  <div class="flex flex-col justify-end text-xs text-white text-opacity-30">
     <p>updated every 6h</p>
     <p class="flex gap-1">
       <span>want more? </span>
@@ -11,7 +11,7 @@
         </a>
       </span>
       <transition name="slide-in">
-        <div v-if="copy_notif" class="px-2 bg-white bg-opacity-10 rounded-full text-2xs">copied to clipboard!</div>
+        <div v-if="copy_notif" class="ml-1 px-2 bg-white bg-opacity-10 rounded-full text-2xs">copied to clipboard!</div>
       </transition>
     </p>
   </div>
@@ -44,7 +44,7 @@ export default {
       } catch (error) {}
 
       try {
-        const transactionHash = await ethereum.request({
+        await ethereum.request({
           method: "eth_sendTransaction",
           params: [
             {
