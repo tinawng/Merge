@@ -18,10 +18,19 @@
 
 <script>
 export default {
+  props: { data: Array },
   data: () => ({
-      max: .24,
-      min: .18
+    // max: 0.24,
+    // min: 0.18,
   }),
+  computed: {
+    max: function () {
+      return this.data.reduce((prev, curr) => (prev > curr ? prev : curr), 0);
+    },
+    min: function () {
+      return this.data.reduce((prev, curr) => (prev < curr ? prev : curr), 0);
+    },
+  },
 };
 </script>
 

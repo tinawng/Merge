@@ -12,8 +12,24 @@
         </Nuxt-Link>
       </div>
     </div>
+
     <div class="section__content">
-      <cards-history />
+      <div class="card__container">
+        <div class="card__title">Stats History</div>
+        <div class="card__content">
+          <div class="card__content__row">
+            <icon class="card__icon dark bg-white" variant="arrow-up" :stroke="2" />
+            <span class="text-xl">{{data_max}}</span>
+            <span class="text-sm text-white text-opacity-40">eth</span>
+          </div>
+          <div class="card__content__row">
+            <icon class="card__icon dark bg-white" variant="arrow-down" :stroke="2" />
+            <span class="text-xl">{{data_min}}</span>
+            <span class="text-sm text-white text-opacity-40">eth</span>
+          </div>
+        </div>
+      </div>
+
       <div ref="graph-container" class="col-span-2" style="height: calc(100% - 2rem);">
         <LineChart
           v-if="chart_height"
@@ -81,38 +97,73 @@ export default {
         ],
       },
     },
-  }),
 
-  async fetch() {},
+    history: undefined,
+  }),
+  computed: {
+    data_max: function () {
+      return this.chart_data.datasets.data.reduce((prev, curr) => (prev > curr ? prev : curr), 0);
+    },
+    data_min: function () {
+      return this.chart_data.datasets.data.reduce((prev, curr) => (prev < curr ? prev : curr), 0);
+    },
+  },
 
   async mounted() {
     this.chart_data.datasets[0].data = [];
     this.chart_data.labels = [];
 
     let stat = this.$route.query.stat;
-    let history = await this.$http.$get("history");
+    this.history = await this.$http.$get("history");
     let tab = history.map((d) => {
       return { data: d[stat], timestamp: d.timestamp };
     });
-
-    for (let i = 0; i < tab.length; i++) {
-      this.chart_data.datasets[0].data.push(tab[i].data);
-      this.chart_data.labels.push(new Date(tab[i].timestamp).toDateString().split(" ").slice(1, 3).join(" "));
-    }
-
-    this.chart_data.labels = this.chart_data.labels.map((item, pos) => {
-      if (this.chart_data.labels.indexOf(item) == pos) return item;
-      else return "";
-    });
+    this.updateChartData(tab);
 
     let el = this.$refs["graph-container"];
     this.chart_height = el.clientHeight;
     this.chart_width = el.clientWidth;
   },
+
+  methods: {
+    updateChartData(tab) {
+      for (let i = 0; i < tab.length; i++) {
+        this.chart_data.datasets[0].data.push(tab[i].data);
+        this.chart_data.labels.push(new Date(tab[i].timestamp).toDateString().split(" ").slice(1, 3).join(" "));
+      }
+
+      this.chart_data.labels = this.chart_data.labels.map((item, pos) => {
+        if (this.chart_data.labels.indexOf(item) == pos) return item;
+        else return "";
+      });
+    },
+
+    changeTimeframe(timeframe) {
+      let tab = [];
+      if (timeframe === "month") {
+        tab = history.map((d) => {
+        // current date 
+
+          return { data: d[stat], timestamp: d.timestamp };
+        });
+      } else if (timeframe === "week") {
+        // tab = history.map((d) => {
+        //   return { data: d[stat], timestamp: d.timestamp };
+        // });
+      } else {
+        tab = history.map((d) => {
+          return { data: d[stat], timestamp: d.timestamp };
+        });
+      }
+      this.updateChartData(tab);
+    },
+  },
 };
 </script>
 
 <style lang="postcss" scoped>
+@import "~/assets/css/card.postcss";
+
 .section__container {
   @apply col-span-3 bg-black;
 }
@@ -122,5 +173,9 @@ export default {
 .section__content {
   @apply mt-8;
   @apply grid grid-cols-3 gap-8;
+}
+
+.card__content {
+  @apply grid grid-cols-2 gap-y-6;
 }
 </style>
