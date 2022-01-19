@@ -1,3 +1,5 @@
+@import "~/assets/css/button.postcss";
+
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -35,23 +37,6 @@ h2, .h2 {
   @apply text-xl font-medium leading-tight;
 }
 
-button {
-  @apply h-10;
-  @apply px-4;
-  @apply bg-white bg-opacity-5;
-  @apply text-white text-opacity-50;
-  @apply flex items-center;
-
-  @apply cursor-pointer select-none;
-  @apply transition-colors;
-}
-button:hover {
-  @apply bg-opacity-20 text-opacity-70;
-}
-button:active {
-  @apply bg-opacity-10 text-opacity-50;
-
-}
 
 .button, .pill {
   @apply cursor-pointer select-none;

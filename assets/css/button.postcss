@@ -1,0 +1,20 @@
+button {
+  @apply h-10;
+  @apply px-4;
+  @apply bg-white bg-opacity-5;
+  @apply text-white text-opacity-50;
+  @apply flex items-center;
+
+  @apply cursor-pointer select-none;
+  @apply transition-colors;
+}
+button:hover {
+  @apply bg-opacity-20 text-opacity-70;
+}
+button:active {
+  @apply bg-opacity-10 text-opacity-50;
+}
+
+button.active {
+  @apply bg-opacity-90 text-black;
+}

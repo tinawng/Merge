@@ -3,7 +3,7 @@
     <div class="section__header">
       <div class="flex justify-between">
         <h1 class="text-white">Merge.</h1>
-        <ui-input :placeholder="token_id" />
+        <ui-input />
       </div>
       <div></div>
       <div class="flex justify-end">
@@ -26,6 +26,13 @@
             <icon class="card__icon dark bg-white" variant="arrow-down" :stroke="2" />
             <span class="text-xl">{{data_min}}</span>
             <span class="text-sm text-white text-opacity-40">eth</span>
+          </div>
+          <div class="card__content__row col-span-2">
+            <button :class="{'active': history_timeframe == 'all'}" @click="changeTimeframe('all')">all time</button>
+            <button :class="{'active': history_timeframe == 'month'}" @click="changeTimeframe('month')">
+              this month
+            </button>
+            <button :class="{'active': history_timeframe == 'week'}" @click="changeTimeframe('week')">this week</button>
           </div>
         </div>
       </div>
@@ -99,23 +106,25 @@ export default {
     },
 
     history: undefined,
+    history_timeframe: "all",
   }),
   computed: {
     data_max: function () {
-      return this.chart_data.datasets.data.reduce((prev, curr) => (prev > curr ? prev : curr), 0);
+      return this.chart_data.datasets[0].data.reduce((prev, curr) => (prev > curr ? prev : curr), 0);
     },
     data_min: function () {
-      return this.chart_data.datasets.data.reduce((prev, curr) => (prev < curr ? prev : curr), 0);
+      return this.chart_data.datasets[0].data.reduce(
+        (prev, curr) => (prev < curr ? prev : curr),
+        Number.MAX_SAFE_INTEGER
+      );
     },
   },
 
   async mounted() {
-    this.chart_data.datasets[0].data = [];
-    this.chart_data.labels = [];
 
     let stat = this.$route.query.stat;
     this.history = await this.$http.$get("history");
-    let tab = history.map((d) => {
+    let tab = this.history.map((d) => {
       return { data: d[stat], timestamp: d.timestamp };
     });
     this.updateChartData(tab);
@@ -127,6 +136,9 @@ export default {
 
   methods: {
     updateChartData(tab) {
+      this.chart_data.datasets[0].data = [];
+      this.chart_data.labels = [];
+
       for (let i = 0; i < tab.length; i++) {
         this.chart_data.datasets[0].data.push(tab[i].data);
         this.chart_data.labels.push(new Date(tab[i].timestamp).toDateString().split(" ").slice(1, 3).join(" "));
@@ -139,22 +151,17 @@ export default {
     },
 
     changeTimeframe(timeframe) {
-      let tab = [];
-      if (timeframe === "month") {
-        tab = history.map((d) => {
-        // current date 
+      let stat = this.$route.query.stat;
+      let tab = this.history.map((d) => {
+        return { data: d[stat], timestamp: d.timestamp };
+      });
 
-          return { data: d[stat], timestamp: d.timestamp };
-        });
-      } else if (timeframe === "week") {
-        // tab = history.map((d) => {
-        //   return { data: d[stat], timestamp: d.timestamp };
-        // });
-      } else {
-        tab = history.map((d) => {
-          return { data: d[stat], timestamp: d.timestamp };
-        });
+      if (timeframe === "week") {
+        tab = tab.filter((d) => Date.parse(d.timestamp) >= Date.now() - 604800000);
+      } else if (timeframe === "month") {
+        tab = tab.filter((d) => Date.parse(d.timestamp) >= Date.now() - 18748800000);
       }
+      console.log(tab);
       this.updateChartData(tab);
     },
   },
