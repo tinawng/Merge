@@ -148,9 +148,12 @@ export default {
         if (this.chart_data.labels.indexOf(item) == pos) return item;
         else return "";
       });
+
+      this.chart_data = { ...this.chart_data }
     },
 
     changeTimeframe(timeframe) {
+      this.history_timeframe = timeframe;
       let stat = this.$route.query.stat;
       let tab = this.history.map((d) => {
         return { data: d[stat], timestamp: d.timestamp };
@@ -161,7 +164,7 @@ export default {
       } else if (timeframe === "month") {
         tab = tab.filter((d) => Date.parse(d.timestamp) >= Date.now() - 18748800000);
       }
-      console.log(tab);
+      
       this.updateChartData(tab);
     },
   },
