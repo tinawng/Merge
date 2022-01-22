@@ -5,7 +5,7 @@
     </div>
     <div class="section__content">
       <div v-for="merge in latest_merges" :key="merge.id" class="section__content__row">
-        <NuxtLink tag="div" :to="`/${merge.id}`" class="flex items-center gap-2 cursor-pointer">
+        <NuxtLink tag="a" :to="`/${merge.id}`" class="section__content__token">
           <span class="">m({{merge.mass}}) #{{merge.id}}</span>
           <merge-icon v-bind="merge" />
         </NuxtLink>
@@ -18,7 +18,7 @@
         <div class="text-xs">
           {{formatDate(merge.merged_on)}}
         </div>
-        <NuxtLink tag="div" :to="`/${merge.merged_to.id}`" class="flex items-center gap-2 cursor-pointer">
+        <NuxtLink tag="a" :to="`/${merge.merged_to.id}`" class="section__content__token">
           <merge-icon v-bind="merge.merged_to" />
           <span class="">m({{merge.merged_to.mass}}) #{{merge.merged_to.id}}</span>
         </NuxtLink>
@@ -64,6 +64,14 @@ export default {
   @apply mb-4 py-2 px-6;
   @apply bg-gray bg-opacity-5 rounded-lg;
   @apply flex justify-between items-center;
+}
+.section__content__token {
+  @apply flex items-center gap-2;
+  @apply cursor-pointer;
+  @apply transition-colors;
+}
+.section__content__token:hover {
+  @apply bg-black bg-opacity-10 rounded-full;
 }
 
 ::-webkit-scrollbar {

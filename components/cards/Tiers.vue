@@ -20,7 +20,6 @@
         </NuxtLink>
       </div>
       <div class="flex flex-col justify-end text-sm text-white text-opacity-40 text-right">
-        <p>total</p>
         <p>mass</p>
         <p>distribution</p>
       </div>
