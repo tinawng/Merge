@@ -10,7 +10,7 @@
           <merge-icon v-bind="merge" />
         </NuxtLink>
         <div v-if="merge.sale_price">
-          <p class="flex justify-center gap-1">{{merge.sale_price}} <icon class="w-4" variant="eth" /></p>
+          <p class="flex justify-center gap-1">{{+parseFloat(((merge.sale_price)).toFixed(2))}} <icon class="w-4" variant="eth" /></p>
           <p v-if="merge.mass > 1" class="-mt-0.5 text-2xs">
             {{+parseFloat(((merge.sale_price/merge.mass)).toFixed(4))}} / m
           </p>
