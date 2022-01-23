@@ -14,7 +14,7 @@
       </div>
     </div>
     <div ref="graph-container" class="h-full">
-      <LineChart v-if="chart_height" :data="barChartData" :options="barChartOptions" :height="chart_height" />
+      <LineChart v-if="chart_height" :data="chart_data" :options="chart_option" :height="chart_height" />
     </div>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
     chart_bound_min: 0,
     chart_bound_max: 14,
 
-    barChartData: {
+    chart_data: {
       labels: [],
       datasets: [
         {
@@ -41,7 +41,7 @@ export default {
         },
       ],
     },
-    barChartOptions: {
+    chart_option: {
       normalized: true,
       responsive: true,
       legend: {
@@ -82,13 +82,13 @@ export default {
   }),
 
   async mounted() {
-    this.barChartData.datasets[0].data = [];
-    this.barChartData.labels = [];
+    this.chart_data.datasets[0].data = [];
+    this.chart_data.labels = [];
 
     this.mass_repartition = await this.$http.$get("mass_repartition");
     for (let i = this.chart_bound_min; i < this.chart_bound_max; i++) {
-      this.barChartData.datasets[0].data.push(this.mass_repartition[i].count);
-      this.barChartData.labels.push(`m(${this.mass_repartition[i].mass})`);
+      this.chart_data.datasets[0].data.push(this.mass_repartition[i].count);
+      this.chart_data.labels.push(`m(${this.mass_repartition[i].mass})`);
     }
 
     let el = this.$refs["graph-container"];
@@ -108,15 +108,15 @@ export default {
     },
 
     updateChartData() {
-      this.barChartData.datasets[0].data = [];
-      this.barChartData.labels = [];
+      this.chart_data.datasets[0].data = [];
+      this.chart_data.labels = [];
 
       for (let i = this.chart_bound_min; i < this.chart_bound_max; i++) {
         if (!this.mass_repartition[i]) continue;
-        this.barChartData.datasets[0].data.push(this.mass_repartition[i].count);
-        this.barChartData.labels.push(`m(${this.mass_repartition[i].mass})`);
+        this.chart_data.datasets[0].data.push(this.mass_repartition[i].count);
+        this.chart_data.labels.push(`m(${this.mass_repartition[i].mass})`);
       }
-      this.barChartData = { ...this.barChartData };
+      this.chart_data = { ...this.chart_data };
     },
   },
 };
