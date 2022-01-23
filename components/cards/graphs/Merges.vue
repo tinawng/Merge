@@ -1,8 +1,14 @@
 <template>
-  <div class="card__container">
+  <div ref="card-container" class="card__container">
     <div class="card__title">Merges</div>
-    <div ref="graph-container" class="h-full">
-      <LineChart v-if="chart_height" :data="barChartData" :options="barChartOptions" :height="chart_height" />
+    <div ref="graph-container" class="flex-grow">
+      <LineChart
+        v-if="chart_height && chart_width"
+        :data="chart_data"
+        :options="chart_option"
+        :height="chart_height"
+        :width="chart_width"
+      />
     </div>
   </div>
 </template>
@@ -12,8 +18,9 @@ export default {
   props: { id: Number },
   data: () => ({
     chart_height: 0,
+    chart_width: 0,
 
-    barChartData: {
+    chart_data: {
       labels: [],
       datasets: [
         {
@@ -26,9 +33,9 @@ export default {
         },
       ],
     },
-    barChartOptions: {
+    chart_option: {
       normalized: true,
-      responsive: true,
+      responsive: false,
       legend: {
         display: false,
       },
@@ -65,8 +72,8 @@ export default {
   }),
 
   async mounted() {
-    this.barChartData.datasets[0].data = [];
-    this.barChartData.labels = [];
+    this.chart_data.datasets[0].data = [];
+    this.chart_data.labels = [];
 
     let tab = await this.$http.$get(`token_history/${this.id}`);
 
@@ -74,19 +81,21 @@ export default {
     tab = tab.filter((value, index, self) => index === self.findIndex((t) => t.merges === value.merges));
 
     for (let i = 0; i < tab.length; i++) {
-      this.barChartData.datasets[0].data.push(tab[i].merges);
-      this.barChartData.labels.push(new Date(tab[i].timestamp).toDateString().split(" ").slice(1, 3).join(" "));
+      this.chart_data.datasets[0].data.push(tab[i].merges);
+      this.chart_data.labels.push(new Date(tab[i].timestamp).toDateString().split(" ").slice(1, 3).join(" "));
     }
 
     let el = this.$refs["graph-container"];
     this.chart_height = el.clientHeight;
+    this.chart_width = el.clientWidth;
   },
 };
 </script>
 
 <style lang="postcss" scoped>
 .card__container {
-  height: calc(100% - 2.5rem);
+  @apply h-full;
+  @apply flex flex-col;
 }
 .card__title {
   @apply pb-2;

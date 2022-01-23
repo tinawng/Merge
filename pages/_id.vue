@@ -3,7 +3,7 @@
     <div class="overview__header">
       <div class="flex justify-between">
         <h1 class="text-white">Merge.</h1>
-        <ui-input :placeholder="token_id" />
+        <ui-input :placeholder="token.id" />
       </div>
       <div></div>
       <div class="flex justify-end">
@@ -13,9 +13,9 @@
       </div>
     </div>
     <div class="overview__content">
-      <cards-token :id="token_id" />
-      <cards-merged :id="token_id" />
-      <cards-graphs-merges :id="token_id" />
+      <cards-token v-bind="token" :token_class="token.class" />
+      <cards-merged v-bind="token" />
+      <cards-graphs-merges v-if="token.merges > 1" :id="token.id" />
     </div>
   </section>
 </template>
@@ -23,12 +23,15 @@
 <script>
 export default {
   data: () => ({
-    token_id: 27000,
+    token: {}
   }),
 
   created() {
-    if (this.$route.params.id.match(/^\d+$/)) this.token_id = Number(this.$route.params.id);
+    if (this.$route.params.id.match(/^\d+$/)) this.token.id = Number(this.$route.params.id);
     else this.$router.push("/");
+  },
+  async fetch() {
+    this.token = await this.$http.$get(`token/${this.token.id}`);
   },
 };
 </script>
