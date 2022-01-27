@@ -15,10 +15,11 @@
 
     <div class="section__content">
       <div class="card__container">
-        <div class="card__title">Per Masses Price Floor</div>
+        <div class="card__title">Masses Price Floors</div>
         <div class="card__content">
           <div class="card__content__row">
-            oui
+            <button :class="{'active': data_format == 'sale_price'}" @click="changeDataFormat('sale_price')">sale price</button>
+            <button :class="{'active': data_format == 'per_mass'}" @click="changeDataFormat('per_mass')">per mass</button>
           </div>
         </div>
       </div>
@@ -52,6 +53,7 @@ export default {
           borderColor: "#33F",
           borderWidth: 3,
           pointRadius: 2,
+          pointBorderColor: []
         },
       ],
     },
@@ -73,10 +75,7 @@ export default {
             gridLines: {
               display: true,
               color: "#39373E99",
-            },
-            ticks: {
-              min: "Dec 26",
-            },
+            }
           },
         ],
         yAxes: [
@@ -91,24 +90,13 @@ export default {
       },
     },
 
-    history: undefined,
-    history_timeframe: "all",
+    data: [],
+    data_format: 'sale_price'
   }),
-  computed: {
-    data_max: function () {
-      return this.chart_data.datasets[0].data.reduce((prev, curr) => (prev > curr ? prev : curr), 0);
-    },
-    data_min: function () {
-      return this.chart_data.datasets[0].data.reduce(
-        (prev, curr) => (prev < curr ? prev : curr),
-        Number.MAX_SAFE_INTEGER
-      );
-    },
-  },
 
   async mounted() {
-    let tab = await this.$http.$get("masses_price_floor");
-    this.updateChartData(tab);
+    this.data = await this.$http.$get("masses_price_floor");
+    this.updateChartData(this.data);
 
     let el = this.$refs["graph-container"];
     this.chart_height = el.clientHeight;
@@ -119,34 +107,20 @@ export default {
     updateChartData(tab) {
       this.chart_data.datasets[0].data = [];
       this.chart_data.labels = [];
+      this.chart_data.datasets[0].pointBorderColor = [];
 
       for (let i = 0; i < tab.length; i++) {
-        this.chart_data.datasets[0].data.push(tab[i].data);
-        this.chart_data.labels.push(new Date(tab[i].timestamp).toDateString().split(" ").slice(1, 3).join(" "));
+        this.chart_data.datasets[0].data.push(this.data_format == "sale_price" ? tab[i].sale_price : tab[i].sale_price / tab[i].mass);
+        this.chart_data.labels.push(`m(${tab[i].mass})`);
+        this.chart_data.datasets[0].pointBorderColor.push("#F00");
       }
-
-      this.chart_data.labels = this.chart_data.labels.map((item, pos) => {
-        if (this.chart_data.labels.indexOf(item) == pos) return item;
-        else return "";
-      });
 
       this.chart_data = { ...this.chart_data }
     },
 
-    changeTimeframe(timeframe) {
-      this.history_timeframe = timeframe;
-      let stat = this.$route.query.stat;
-      let tab = this.history.map((d) => {
-        return { data: d[stat], timestamp: d.timestamp };
-      });
-
-      if (timeframe === "week") {
-        tab = tab.filter((d) => Date.parse(d.timestamp) >= Date.now() - 604800000);
-      } else if (timeframe === "month") {
-        tab = tab.filter((d) => Date.parse(d.timestamp) >= Date.now() - 18748800000);
-      }
-      
-      this.updateChartData(tab);
+    changeDataFormat(format) {
+      this.data_format = format;
+      this.updateChartData(this.data);
     },
   },
 };
