@@ -1,24 +1,22 @@
 <template>
   <div class="graph__container">
-    <div class="graph__title">Merges</div>
+    <div class="graph__title">Masses Floor</div>
     <div ref="graph-content" class="flex-grow">
       <LineChart
-        v-if="chart_height && chart_width"
+        v-if="chart_height"
         :data="chart_data"
         :options="chart_option"
         :height="chart_height"
-        :width="chart_width"
       />
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
-  props: { id: Number },
   data: () => ({
     chart_height: 0,
-    chart_width: 0,
 
     chart_data: {
       labels: [],
@@ -75,10 +73,7 @@ export default {
     this.chart_data.datasets[0].data = [];
     this.chart_data.labels = [];
 
-    let tab = await this.$http.$get(`token_history/${this.id}`);
-
-    // Remove useless records (only keep record where merges count change)
-    tab = tab.filter((value, index, self) => index === self.findIndex((t) => t.merges === value.merges));
+    let tab = await this.$http.$get("masses_price_floor");
 
     for (let i = 0; i < tab.length; i++) {
       this.chart_data.datasets[0].data.push(tab[i].merges);
@@ -87,19 +82,14 @@ export default {
 
     let el = this.$refs["graph-content"];
     this.chart_height = el.clientHeight;
-    this.chart_width = el.clientWidth;
   },
 };
 </script>
 
 <style lang="postcss" scoped>
 .graph__container {
-  @apply h-full;
-  @apply flex flex-col;
 }
 .graph__title {
-  @apply pb-2;
-  @apply border-b border-white border-opacity-10;
-  @apply text-xl text-white text-opacity-40;
+
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="card__container">
-    <div class="card__title">
+  <div class="graph__container">
+    <div class="graph__title">
       <span>Token per mass</span>
       <div class="flex items-center">
         <button-icon class="w-5 ml-auto" icon="arrow-left" :disabled="chart_bound_min == 0" @click.native="previous" />
@@ -13,7 +13,7 @@
         />
       </div>
     </div>
-    <div ref="graph-container" class="h-full">
+    <div ref="graph-content" class="h-full">
       <LineChart v-if="chart_height" :data="chart_data" :options="chart_option" :height="chart_height" />
     </div>
   </div>
@@ -91,7 +91,7 @@ export default {
       this.chart_data.labels.push(`m(${this.mass_repartition[i].mass})`);
     }
 
-    let el = this.$refs["graph-container"];
+    let el = this.$refs["graph-content"];
     this.chart_height = el?.clientHeight || 200;
   },
 
@@ -123,10 +123,10 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.card__container {
+.graph__container {
   height: calc(100% - 2rem);
 }
-.card__title {
+.graph__title {
   @apply pb-2;
   @apply border-b border-white border-opacity-10;
   @apply flex justify-between items-center;
