@@ -90,6 +90,9 @@
       <line x1="8" y1="2" x2="8" y2="6"></line>
       <line x1="3" y1="10" x2="21" y2="10"></line>
     </g>
+    <g v-else-if="variant == 'code'">
+      <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
+    </g>
   </svg>
 </template>
 

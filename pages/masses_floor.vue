@@ -18,8 +18,16 @@
         <div class="card__title">Masses Price Floors</div>
         <div class="card__content">
           <div class="card__content__row">
-            <button :class="{'active': data_format == 'sale_price'}" @click="changeDataFormat('sale_price')">sale price</button>
             <button :class="{'active': data_format == 'per_mass'}" @click="changeDataFormat('per_mass')">per mass</button>
+            <button :class="{'active': data_format == 'sale_price'}" @click="changeDataFormat('sale_price')">sale prices</button>
+          </div>
+          <div class="card__content__row flex-wrap">
+            <p class="w-full">Based on the latest sale available for each mass:</p>
+            <icon class="card__icon text-blue" variant="circle" />
+            <span>Today</span>
+            <icon class="w-6 md:w-8 lg:w-10 mx-2 p-1 md:p-1.5 lg:p-2 text-white" variant="code" />
+            <span>A month ago</span>
+            <icon class="card__icon text-yellow" variant="circle" />
           </div>
         </div>
       </div>
@@ -50,8 +58,8 @@ export default {
           label: "eth",
           data: [],
           backgroundColor: "#33F3",
-          borderColor: "#33F",
-          borderWidth: 3,
+          borderColor: "#33F6",
+          borderWidth: 4,
           pointRadius: 2,
           pointBorderColor: []
         },
@@ -91,7 +99,7 @@ export default {
     },
 
     data: [],
-    data_format: 'sale_price'
+    data_format: 'per_mass'
   }),
 
   async mounted() {
@@ -112,7 +120,10 @@ export default {
       for (let i = 0; i < tab.length; i++) {
         this.chart_data.datasets[0].data.push(this.data_format == "sale_price" ? tab[i].sale_price : tab[i].sale_price / tab[i].mass);
         this.chart_data.labels.push(`m(${tab[i].mass})`);
-        this.chart_data.datasets[0].pointBorderColor.push("#F00");
+        let days_since = (Date.now() - Date.parse(tab[i].merged_on))/86000000;
+        let hex = Math.max(Math.round(16 - days_since), 3).toString(16);
+        let hex2 = Math.min(Math.round(days_since), 12).toString(16);
+        this.chart_data.datasets[0].pointBorderColor.push(`#${hex2}${hex2}${hex}`);
       }
 
       this.chart_data = { ...this.chart_data }
@@ -141,6 +152,6 @@ export default {
 }
 
 .card__content {
-  @apply grid grid-cols-2 gap-y-6;
+  @apply grid grid-cols-1 gap-y-6;
 }
 </style>
