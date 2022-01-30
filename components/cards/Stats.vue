@@ -2,12 +2,12 @@
   <div class="card__container">
     <div class="card__title">Stats</div>
     <div class="card__content">
-      <NuxtLink tag="a" to="/history?stat=token_count" class="card__content__row">
+      <NuxtLink tag="a" to="/history?param=token_count" class="card__content__row">
         <icon class="card__icon" variant="circle" />
         <span class="card__content__value">{{token_count}}</span>
         <span class="card__content__label">tokens</span>
       </NuxtLink>
-      <NuxtLink tag="a" to="/history?stat=merged_count" class="card__content__row">
+      <NuxtLink tag="a" to="/history?param=merged_count" class="card__content__row">
         <icon class="card__icon bg-red" variant="minimize" :stroke="2" />
         <span class="card__content__value">{{merged_count}}</span>
         <span class="card__content__label">merged</span>
@@ -17,17 +17,17 @@
         <span class="card__content__value">{{alpha_mass}}</span>
         <span class="card__content__label">alpha mass</span>
       </NuxtLink>
-      <NuxtLink tag="a" to="/history?stat=total_mass" class="card__content__row">
+      <NuxtLink tag="a" to="/history?param=total_mass" class="card__content__row">
         <icon class="card__icon" variant="globe" />
         <span class="card__content__value">{{total_mass}}</span>
         <span class="card__content__label">global mass</span>
       </NuxtLink>
-      <NuxtLink tag="a" to="/history?stat=os_price_floor" class="card__content__row">
+      <NuxtLink tag="a" to="/history?param=os_price_floor" class="card__content__row">
         <icon class="card__icon bg-blue" variant="eth" />
         <span class="card__content__value">{{price_floor}}</span>
         <span class="card__content__label">eth floor</span>
       </NuxtLink>
-      <NuxtLink tag="a" to="/history?stat=owner_count" class="card__content__row">
+      <NuxtLink tag="a" to="/history?param=owner_count" class="card__content__row">
         <icon class="card__icon dark bg-yellow" variant="user" :stroke="2" />
         <span class="card__content__value">{{owner_count}}</span>
         <span class="card__content__label">owners</span>

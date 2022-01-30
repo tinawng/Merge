@@ -20,12 +20,12 @@
           <div class="card__content__row">
             <icon class="card__icon dark bg-white" variant="arrow-up" :stroke="2" />
             <span class="text-xl">{{data_max}}</span>
-            <span class="text-sm text-white text-opacity-40">eth</span>
+            <span v-show="history_param == 'os_price_floor'" class="text-sm text-white text-opacity-40">eth</span>
           </div>
           <div class="card__content__row">
             <icon class="card__icon dark bg-white" variant="arrow-down" :stroke="2" />
             <span class="text-xl">{{data_min}}</span>
-            <span class="text-sm text-white text-opacity-40">eth</span>
+            <span v-show="history_param == 'os_price_floor'" class="text-sm text-white text-opacity-40">eth</span>
           </div>
           <div class="card__content__row col-span-2">
             <button :class="{'active': history_timeframe == 'all'}" @click="changeTimeframe('all')">all time</button>
@@ -33,6 +33,9 @@
               this month
             </button>
             <button :class="{'active': history_timeframe == 'week'}" @click="changeTimeframe('week')">this week</button>
+          </div>
+          <div class="card__content__row">
+            <NuxtLink v-if="history_param == 'os_price_floor'" tag="button" to="history/masses_floor">per mass floor</NuxtLink>
           </div>
         </div>
       </div>
@@ -109,6 +112,9 @@ export default {
     history_timeframe: "all",
   }),
   computed: {
+    history_param: function () {
+      return this.$route.query.param;
+    },
     data_max: function () {
       return this.chart_data.datasets[0].data.reduce((prev, curr) => (prev > curr ? prev : curr), 0);
     },
@@ -121,11 +127,9 @@ export default {
   },
 
   async mounted() {
-
-    let stat = this.$route.query.stat;
     this.history = await this.$http.$get("history");
     let tab = this.history.map((d) => {
-      return { data: d[stat], timestamp: d.timestamp };
+      return { data: d[this.history_param], timestamp: d.timestamp };
     });
     this.updateChartData(tab);
 
@@ -154,15 +158,14 @@ export default {
 
     changeTimeframe(timeframe) {
       this.history_timeframe = timeframe;
-      let stat = this.$route.query.stat;
       let tab = this.history.map((d) => {
-        return { data: d[stat], timestamp: d.timestamp };
+        return { data: d[this.history_param], timestamp: d.timestamp };
       });
 
       if (timeframe === "week") {
         tab = tab.filter((d) => Date.parse(d.timestamp) >= Date.now() - 604800000);
       } else if (timeframe === "month") {
-        tab = tab.filter((d) => Date.parse(d.timestamp) >= Date.now() - 18748800000);
+        tab = tab.filter((d) => Date.parse(d.timestamp) >= Date.now() - 2678400000);
       }
       
       this.updateChartData(tab);

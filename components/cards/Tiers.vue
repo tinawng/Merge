@@ -3,17 +3,17 @@
     <div class="card__title">Tiers</div>
     <div class="card__content">
       <div class="flex-grow flex flex-col gap-y-6 lg:gap-y-8">
-        <NuxtLink tag="a" to="/history?stat=tiers_count" class="card__content__row">
+        <NuxtLink tag="a" to="/history/tiers_count" class="card__content__row">
           <icon class="card__icon text-red" variant="circle" />
           <span class="text-xl">{{tiers_count[3]}}</span>
           <span class="text-sm text-white text-opacity-40">tier 4 tokens</span>
         </NuxtLink>
-        <NuxtLink tag="a" to="/history?stat=tiers_count" class="card__content__row">
+        <NuxtLink tag="a" to="/history/tiers_count" class="card__content__row">
           <icon class="card__icon text-yellow" variant="circle" />
           <span class="text-xl">{{tiers_count[1]}}</span>
           <span class="text-sm text-white text-opacity-40">tier 2 tokens</span>
         </NuxtLink>
-        <NuxtLink tag="a" to="/history?stat=tiers_count" class="card__content__row">
+        <NuxtLink tag="a" to="/history/tiers_count" class="card__content__row">
           <icon class="card__icon text-blue" variant="circle" />
           <span class="text-xl">{{tiers_count[2]}}</span>
           <span class="text-sm text-white text-opacity-40"> tier 3 tokens</span>
@@ -79,28 +79,13 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.card__container {
-  @apply text-white;
-}
-.card__title {
-  @apply pb-2;
-  @apply border-b border-white border-opacity-10;
-  @apply text-xl text-white text-opacity-40;
-}
+@import "~/assets/css/card.postcss";
+
 .card__content {
   @apply h-4/5;
-  @apply pt-8;
   @apply flex gap-6;
 }
 .card__content__row {
-  @apply flex items-center gap-2 lg:gap-3;
-}
-.card__icon {
-  @apply w-8 lg:w-10;
-  @apply p-1.5 lg:p-2;
-  @apply border border-white border-opacity-10 rounded-full;
-}
-.card__icon.dark {
-  @apply text-black;
+  @apply w-fit;
 }
 </style>

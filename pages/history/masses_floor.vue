@@ -18,8 +18,12 @@
         <div class="card__title">Masses Price Floors</div>
         <div class="card__content">
           <div class="card__content__row">
-            <button :class="{'active': data_format == 'per_mass'}" @click="changeDataFormat('per_mass')">per mass</button>
-            <button :class="{'active': data_format == 'sale_price'}" @click="changeDataFormat('sale_price')">sale prices</button>
+            <button :class="{'active': data_format == 'per_mass'}" @click="changeDataFormat('per_mass')">
+              per mass
+            </button>
+            <button :class="{'active': data_format == 'sale_price'}" @click="changeDataFormat('sale_price')">
+              sale prices
+            </button>
           </div>
           <div class="card__content__row flex-wrap">
             <p class="w-full">Based on the latest sale available for each mass:</p>
@@ -61,7 +65,7 @@ export default {
           borderColor: "#33F6",
           borderWidth: 4,
           pointRadius: 2,
-          pointBorderColor: []
+          pointBorderColor: [],
         },
       ],
     },
@@ -83,7 +87,7 @@ export default {
             gridLines: {
               display: true,
               color: "#39373E99",
-            }
+            },
           },
         ],
         yAxes: [
@@ -93,13 +97,16 @@ export default {
               color: "#39373E99",
             },
             position: "right",
+            ticks: {
+              callback: (value) => value,
+            },
           },
         ],
       },
     },
 
     data: [],
-    data_format: 'per_mass'
+    data_format: "per_mass",
   }),
 
   async mounted() {
@@ -118,19 +125,25 @@ export default {
       this.chart_data.datasets[0].pointBorderColor = [];
 
       for (let i = 0; i < tab.length; i++) {
-        this.chart_data.datasets[0].data.push(this.data_format == "sale_price" ? tab[i].sale_price : tab[i].sale_price / tab[i].mass);
+        this.chart_data.datasets[0].data.push(
+          this.data_format == "sale_price" ? tab[i].sale_price : tab[i].sale_price / tab[i].mass
+        );
         this.chart_data.labels.push(`m(${tab[i].mass})`);
-        let days_since = (Date.now() - Date.parse(tab[i].merged_on))/86000000;
-        let hex = Math.max(Math.round(16 - days_since), 3).toString(16);
-        let hex2 = Math.min(Math.round(days_since), 12).toString(16);
+        let days_since = (Date.now() - Date.parse(tab[i].merged_on)) / 86000000;
+        let hex = Math.max(Math.round(15 - days_since), 3).toString(16);
+        let hex2 = Math.max(Math.min(Math.round(days_since), 15), 3).toString(16);
         this.chart_data.datasets[0].pointBorderColor.push(`#${hex2}${hex2}${hex}`);
       }
 
-      this.chart_data = { ...this.chart_data }
+      this.chart_data = { ...this.chart_data };
     },
 
     changeDataFormat(format) {
       this.data_format = format;
+      if (this.data_format == "sale_price")
+        this.chart_option.scales.yAxes[0].type = "logarithmic";
+      else
+        this.chart_option.scales.yAxes[0].type = "linear";
       this.updateChartData(this.data);
     },
   },
