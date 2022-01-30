@@ -134,7 +134,7 @@ export default {
     this.updateChartData(tab);
 
     let el = this.$refs["graph-container"];
-    this.chart_height = el.clientHeight;
+    this.chart_height = el.clientHeight < 100 ? 300 : el.clientHeight; // 350px for 📱
     this.chart_width = el.clientWidth;
   },
 
@@ -185,7 +185,7 @@ export default {
 }
 .section__content {
   @apply mt-8;
-  @apply grid grid-cols-3 gap-8;
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
 }
 
 .card__content {

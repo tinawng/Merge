@@ -46,6 +46,6 @@ section.overview {
 }
 .overview__content {
   @apply mt-6;
-  @apply grid grid-cols-3 gap-8;
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
 }
 </style>

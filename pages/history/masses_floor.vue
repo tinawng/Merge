@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <div ref="graph-container" class="col-span-2" style="height: calc(100% - 2rem);">
+      <div ref="graph-container" class="md:col-span-2" style="height: calc(100% - 2rem);">
         <LineChart
           v-if="chart_height"
           :data="chart_data"
@@ -114,7 +114,7 @@ export default {
     this.updateChartData(this.data);
 
     let el = this.$refs["graph-container"];
-    this.chart_height = el.clientHeight;
+    this.chart_height = el.clientHeight < 100 ? 300 : el.clientHeight; // 350px for 📱
     this.chart_width = el.clientWidth;
   },
 
@@ -161,7 +161,7 @@ export default {
 }
 .section__content {
   @apply mt-8;
-  @apply grid grid-cols-3 gap-8;
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
 }
 
 .card__content {

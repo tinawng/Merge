@@ -44,15 +44,9 @@ export default {
     chart_option: {
       normalized: true,
       responsive: true,
-      legend: {
-        display: false,
-      },
-      title: {
-        display: false,
-      },
-      tooltips: {
-        backgroundColor: "#33F3",
-      },
+      legend: { display: false },
+      title: { display: false },
+      tooltips: { backgroundColor: "#33F3" },
       scales: {
         xAxes: [
           {
@@ -92,7 +86,7 @@ export default {
     }
 
     let el = this.$refs["graph-content"];
-    this.chart_height = el?.clientHeight || 200;
+    this.chart_height = el.clientHeight < 100 ? 300 : el.clientHeight; // 350px for 📱
   },
 
   methods: {

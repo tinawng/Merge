@@ -86,7 +86,7 @@ export default {
     }
 
     let el = this.$refs["graph-content"];
-    this.chart_height = el.clientHeight;
+    this.chart_height = el.clientHeight < 100 ? 300 : el.clientHeight; // 350px for 📱
     this.chart_width = el.clientWidth;
   },
 };

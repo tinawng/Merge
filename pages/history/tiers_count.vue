@@ -163,7 +163,7 @@ export default {
     this.updateChartData(tab);
 
     let el = this.$refs["graph-container"];
-    this.chart_height = el.clientHeight;
+    this.chart_height = el.clientHeight < 100 ? 300 : el.clientHeight; // 350px for 📱
     this.chart_width = el.clientWidth;
   },
 

@@ -49,7 +49,7 @@ export default {
 };
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .section__container {
   @apply bg-white;
   @apply pb-14;
