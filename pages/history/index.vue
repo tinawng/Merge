@@ -35,7 +35,9 @@
             <button :class="{'active': history_timeframe == 'week'}" @click="changeTimeframe('week')">this week</button>
           </div>
           <div class="card__content__row">
-            <NuxtLink v-if="history_param == 'os_price_floor'" tag="button" to="history/masses_floor">per mass floor</NuxtLink>
+            <NuxtLink v-if="history_param == 'os_price_floor'" tag="button" to="history/masses_floor"
+              >per mass floor</NuxtLink
+            >
           </div>
         </div>
       </div>
@@ -153,7 +155,7 @@ export default {
         else return "";
       });
 
-      this.chart_data = { ...this.chart_data }
+      this.chart_data = { ...this.chart_data };
     },
 
     changeTimeframe(timeframe) {
@@ -167,7 +169,7 @@ export default {
       } else if (timeframe === "month") {
         tab = tab.filter((d) => Date.parse(d.timestamp) >= Date.now() - 2678400000);
       }
-      
+
       this.updateChartData(tab);
     },
   },
@@ -184,8 +186,9 @@ export default {
   @apply grid grid-cols-3 gap-8;
 }
 .section__content {
-  @apply mt-8;
-  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+  @apply h-full;
+  @apply mt-4;
+  @apply grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-8;
 }
 
 .card__content {

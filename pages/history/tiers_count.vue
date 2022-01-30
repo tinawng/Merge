@@ -51,7 +51,7 @@
         </div>
       </div>
 
-      <div ref="graph-container" class="col-span-2" style="height: calc(100% - 2rem);">
+      <div ref="graph-container" class="md:col-span-2" style="height: calc(100% - 2rem);">
         <LineChart
           v-if="chart_height"
           :data="chart_data"
@@ -217,8 +217,9 @@ export default {
   @apply grid grid-cols-3 gap-8;
 }
 .section__content {
-  @apply mt-8;
-  @apply grid grid-cols-3 gap-8;
+  @apply h-full;
+  @apply mt-4;
+  @apply grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-8;
 }
 
 .card__content {
