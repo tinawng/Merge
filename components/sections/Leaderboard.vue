@@ -7,7 +7,7 @@
     </div>
 
     <div class="section__content">
-      <merge v-for="token in top_100[index]" :key="token.id" class="w-24" v-bind="token" />
+      <merge v-for="token in top_100[index]" :key="token.id" class="w-18 md:w-24" v-bind="token" />
     </div>
   </section>
 </template>
@@ -33,7 +33,7 @@ export default {
 <style lang="postcss" scoped>
 .section__container {
   @apply col-span-2;
-  @apply pb-14; /* scrollbar padding */
+  @apply md:pb-14; /* scrollbar padding */
   @apply bg-blue bg-opacity-80;
 }
 .section__header {
@@ -47,7 +47,7 @@ export default {
 .section__content {
   @apply h-96 md:h-full;
   @apply mt-4;
-  @apply flex items-center flex-wrap gap-x-6 gap-y-2;
+  @apply flex items-center flex-wrap gap-x-2 md:gap-x-6 gap-y-2;
   @apply overflow-y-scroll;
 }
 

@@ -13,6 +13,7 @@ module.exports = {
     extend: {
       fontSize: {
         '2xs': '.65rem',
+        '3xs': '.6rem',
       },
       height: {
         'fit': 'fit-content',

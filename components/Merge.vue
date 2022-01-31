@@ -5,10 +5,6 @@
       <span>m({{mass}})</span>
       <span>#{{id}}</span>
     </div>
-    <!-- <div class="pt-0.5 px-1 flex justify-between text-xs text-white text-opacity-40">
-      <span>m({{mass}})</span>
-      <span>#{{id}}</span>
-    </div> -->
   </NuxtLink>
 </template>
 
@@ -42,6 +38,6 @@ export default {
   @apply mt-1;
   @apply py-0.5 px-1.5;
   @apply flex justify-between rounded-md;
-  @apply text-2xs text-opacity-90;
+  @apply text-3xs md:text-2xs text-opacity-90;
 }
 </style>
