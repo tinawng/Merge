@@ -1,17 +1,6 @@
 <template>
   <section class="overview">
-    <div class="overview__header">
-      <div class="flex justify-between">
-        <h1 class="text-white">Merge.</h1>
-        <ui-input :placeholder="token.id" />
-      </div>
-      <div></div>
-      <div class="flex justify-end">
-        <Nuxt-Link to="/">
-          <button class=""><icon class="w-6" variant="return" /></button>
-        </Nuxt-Link>
-      </div>
-    </div>
+    <nav-bar :id="token.id" back/>
     <div class="overview__content">
       <cards-token v-bind="token" :token_class="token.class" />
       <cards-merged v-bind="token" />
@@ -40,9 +29,6 @@ export default {
 section.overview {
   @apply col-span-3;
   @apply bg-black;
-}
-.overview__header {
-  @apply grid grid-cols-3 gap-8;
 }
 .overview__content {
   @apply mt-6;

@@ -1,17 +1,6 @@
 <template>
   <section class="section__container">
-    <div class="section__header">
-      <div class="flex justify-between">
-        <h1 class="text-white">Merge.</h1>
-        <ui-input />
-      </div>
-      <div></div>
-      <div class="flex justify-end">
-        <Nuxt-Link to="/">
-          <button class=""><icon class="w-6" variant="return" /></button>
-        </Nuxt-Link>
-      </div>
-    </div>
+    <nav-bar back/>
 
     <div class="section__content">
       <div class="card__container">
@@ -212,9 +201,6 @@ export default {
 
 .section__container {
   @apply col-span-3 bg-black;
-}
-.section__header {
-  @apply grid grid-cols-3 gap-8;
 }
 .section__content {
   @apply h-full;
