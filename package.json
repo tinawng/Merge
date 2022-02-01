@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "generate": "nuxt generate --modern"
+    "generate": "nuxt generate --modern",
+    "deploy": "ssh siyu \"(cd /home/pi/work/static-servers/merge && rm -rf /dist)\" && scp -r ./dist siyu:/home/pi/work/static-servers/merge && ssh siyu \"(cd /home/pi/work/static-servers/merge && yarn compress && pm2 restart 'merge')\""
   },
   "dependencies": {
     "chart.js": "2.9.4",
