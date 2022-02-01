@@ -5,21 +5,21 @@
       <div class="flex-grow flex flex-col gap-y-6 lg:gap-y-8">
         <NuxtLink tag="a" to="/history/tiers_count" class="card__content__row">
           <icon class="card__icon text-red" variant="circle" />
-          <span class="text-xl">{{tiers_count[3]}}</span>
-          <span class="text-sm text-white text-opacity-40">tier 4 tokens</span>
+          <span class="card__content__value">{{tiers_count[3]}}</span>
+          <span class="card__content__label">tier 4 tokens</span>
         </NuxtLink>
         <NuxtLink tag="a" to="/history/tiers_count" class="card__content__row">
           <icon class="card__icon text-yellow" variant="circle" />
-          <span class="text-xl">{{tiers_count[1]}}</span>
-          <span class="text-sm text-white text-opacity-40">tier 2 tokens</span>
+          <span class="card__content__value">{{tiers_count[1]}}</span>
+          <span class="card__content__label">tier 2 tokens</span>
         </NuxtLink>
         <NuxtLink tag="a" to="/history/tiers_count" class="card__content__row">
           <icon class="card__icon text-blue" variant="circle" />
-          <span class="text-xl">{{tiers_count[2]}}</span>
-          <span class="text-sm text-white text-opacity-40"> tier 3 tokens</span>
+          <span class="card__content__value">{{tiers_count[2]}}</span>
+          <span class="card__content__label"> tier 3 tokens</span>
         </NuxtLink>
       </div>
-      <div class="flex flex-col justify-end text-sm text-white text-opacity-40 text-right">
+      <div class="flex flex-col justify-end card__content__label text-right">
         <p>mass</p>
         <p>distribution</p>
       </div>
@@ -28,24 +28,24 @@
         <div class="card__content__row">
           <icon class="w-2 text-red" variant="square" />
           <span class="text-sm">{{Math.round(mass_repartition[0].value)}}%</span>
-          <span class="text-xs text-white text-opacity-40"> tier 4</span>
+          <span class="hidden md:block text-xs text-white text-opacity-40"> tier 4</span>
         </div>
         <div class="card__content__row">
           <icon class="w-2 text-yellow" variant="square" />
           <span class="text-sm">{{Math.round(mass_repartition[1].value)}}%</span>
-          <span class="text-xs text-white text-opacity-40"> tier 2</span>
+          <span class="hidden md:block text-xs text-white text-opacity-40"> tier 2</span>
         </div>
         <div class="card__content__row">
           <icon class="w-2 text-blue" variant="square" />
           <span class="text-sm">{{(mass_repartition[2].value || 0).toFixed(1)}}%</span>
-          <span class="text-xs text-white text-opacity-40"> tier 3</span>
+          <span class="hidden md:block text-xs text-white text-opacity-40"> tier 3</span>
         </div>
         <div class="card__content__row mt-auto">
           <icon class="w-2 text-gray" variant="square" />
           <span class="text-sm">
             {{100-Math.round(mass_repartition[0].value + mass_repartition[1].value + mass_repartition[2].value)}}%
           </span>
-          <span class="text-xs text-white text-opacity-40"> tier 1</span>
+          <span class="hidden md:block text-xs text-white text-opacity-40"> tier 1</span>
         </div>
       </div>
     </div>

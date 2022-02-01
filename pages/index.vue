@@ -28,10 +28,10 @@ section.overview {
   @apply bg-black;
 }
 .overview__header {
-  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+  @apply grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8;
 }
 .overview__content {
-  @apply mt-8;
+  @apply mt-0 md:mt-8;
   @apply grid grid-cols-1 md:grid-cols-3 gap-8;
 }
 </style>
