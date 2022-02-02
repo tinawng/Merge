@@ -18,9 +18,9 @@
             </button>
           </div>
           <div class="card__content__row flex-wrap">
-            <p v-if="data_format == 'ratio'">Display ratio between m() sale price and m(1) floor price</p>
+            <p v-if="data_format == 'ratio'">Display ratio between m(x) sale price and m(1) floor price</p>
             <p v-else-if="data_format == 'per_mass'">Display value by mass</p>
-            <p v-else-if="data_format == 'sale_price'">Display sale value</p>
+            <p v-else-if="data_format == 'sale_price'">Display sale value by mass <small>(logarithmic scale)</small></p>
             <p class="w-full">Based on the latest sale available for each mass:</p>
             <icon class="card__icon text-blue" variant="circle" />
             <span>Today</span>
@@ -109,7 +109,7 @@ export default {
     this.updateChartData(this.data);
 
     let el = this.$refs["graph-container"];
-    this.chart_height = el.clientHeight < 100 ? 300 : el.clientHeight; // 350px for 📱
+    this.chart_height = el.clientHeight < 100 ? 300 : el.clientHeight; // 300px for 📱
     this.chart_width = el.clientWidth;
   },
 
@@ -122,9 +122,13 @@ export default {
       let m1_floor = tab[0].sale_price;
 
       for (let i = 0; i < tab.length; i++) {
-        this.chart_data.datasets[0].data.push(
-          this.data_format == "ratio" ? m1_floor / tab[i].sale_price : "sale_price" ? tab[i].sale_price : tab[i].sale_price / tab[i].mass
-        );
+        if (this.data_format == "ratio")
+          this.chart_data.datasets[0].data.push(m1_floor / tab[i].sale_price);
+        else if (this.data_format == "per_mass")
+          this.chart_data.datasets[0].data.push(tab[i].sale_price / tab[i].mass);
+        else if (this.data_format == "sale_price")
+          this.chart_data.datasets[0].data.push(tab[i].sale_price);
+
         this.chart_data.labels.push(`m(${tab[i].mass})`);
         let days_since = (Date.now() - Date.parse(tab[i].merged_on)) / 86000000;
         let hex = Math.max(Math.round(15 - days_since), 3).toString(16);
