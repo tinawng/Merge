@@ -7,6 +7,9 @@
         <div class="card__title">Masses Price Floors</div>
         <div class="card__content">
           <div class="card__content__row">
+            <button :class="{'active': data_format == 'ratio'}" @click="changeDataFormat('ratio')">
+              m(1) ratio
+            </button>
             <button :class="{'active': data_format == 'per_mass'}" @click="changeDataFormat('per_mass')">
               per mass
             </button>
@@ -15,6 +18,9 @@
             </button>
           </div>
           <div class="card__content__row flex-wrap">
+            <p v-if="data_format == 'ratio'">Display ratio between m() sale price and m(1) floor price</p>
+            <p v-else-if="data_format == 'per_mass'">Display value by mass</p>
+            <p v-else-if="data_format == 'sale_price'">Display sale value</p>
             <p class="w-full">Based on the latest sale available for each mass:</p>
             <icon class="card__icon text-blue" variant="circle" />
             <span>Today</span>
@@ -95,7 +101,7 @@ export default {
     },
 
     data: [],
-    data_format: "per_mass",
+    data_format: "ratio",
   }),
 
   async mounted() {
@@ -113,9 +119,11 @@ export default {
       this.chart_data.labels = [];
       this.chart_data.datasets[0].pointBorderColor = [];
 
+      let m1_floor = tab[0].sale_price;
+
       for (let i = 0; i < tab.length; i++) {
         this.chart_data.datasets[0].data.push(
-          this.data_format == "sale_price" ? tab[i].sale_price : tab[i].sale_price / tab[i].mass
+          this.data_format == "ratio" ? m1_floor / tab[i].sale_price : "sale_price" ? tab[i].sale_price : tab[i].sale_price / tab[i].mass
         );
         this.chart_data.labels.push(`m(${tab[i].mass})`);
         let days_since = (Date.now() - Date.parse(tab[i].merged_on)) / 86000000;
