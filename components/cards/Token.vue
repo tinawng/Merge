@@ -5,7 +5,6 @@
       <div class="flex gap-1.5">
         <span class="text-xl font-semibold">m({{mass}})</span>
         <span class="self-end ">#{{id}}</span>
-        <!-- <span v-if="merged" class="ml-auto p-1.5 bg-black text-white text-xs font-normal rounded">MERGED</span> -->
       </div>
       <p class="mt-2 ">Tier {{tier}}</p>
       <p class="">Class {{token_class}}</p>
