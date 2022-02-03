@@ -1,15 +1,13 @@
 <template>
   <section class="section__container">
-    <nav-bar back/>
+    <nav-bar back />
 
     <div class="section__content">
       <div class="card__container">
         <div class="card__title">Masses Price Floors</div>
         <div class="card__content">
           <div class="card__content__row">
-            <button :class="{'active': data_format == 'ratio'}" @click="changeDataFormat('ratio')">
-              m(1) ratio
-            </button>
+            <button :class="{'active': data_format == 'ratio'}" @click="changeDataFormat('ratio')">m(1) ratio</button>
             <button :class="{'active': data_format == 'per_mass'}" @click="changeDataFormat('per_mass')">
               per mass
             </button>
@@ -59,7 +57,7 @@ export default {
           backgroundColor: "#33F3",
           borderColor: "#33F6",
           borderWidth: 4,
-          pointRadius: 2,
+          pointRadius: 2.5,
           pointBorderColor: [],
         },
       ],
@@ -122,12 +120,9 @@ export default {
       let m1_floor = tab[0].sale_price;
 
       for (let i = 0; i < tab.length; i++) {
-        if (this.data_format == "ratio")
-          this.chart_data.datasets[0].data.push(m1_floor / tab[i].sale_price);
-        else if (this.data_format == "per_mass")
-          this.chart_data.datasets[0].data.push(tab[i].sale_price / tab[i].mass);
-        else if (this.data_format == "sale_price")
-          this.chart_data.datasets[0].data.push(tab[i].sale_price);
+        if (this.data_format == "ratio") this.chart_data.datasets[0].data.push(m1_floor / tab[i].sale_price);
+        else if (this.data_format == "per_mass") this.chart_data.datasets[0].data.push(tab[i].sale_price / tab[i].mass);
+        else if (this.data_format == "sale_price") this.chart_data.datasets[0].data.push(tab[i].sale_price);
 
         this.chart_data.labels.push(`m(${tab[i].mass})`);
         let days_since = (Date.now() - Date.parse(tab[i].merged_on)) / 86000000;
@@ -141,10 +136,8 @@ export default {
 
     changeDataFormat(format) {
       this.data_format = format;
-      if (this.data_format == "sale_price")
-        this.chart_option.scales.yAxes[0].type = "logarithmic";
-      else
-        this.chart_option.scales.yAxes[0].type = "linear";
+      if (this.data_format == "sale_price") this.chart_option.scales.yAxes[0].type = "logarithmic";
+      else this.chart_option.scales.yAxes[0].type = "linear";
       this.updateChartData(this.data);
     },
   },

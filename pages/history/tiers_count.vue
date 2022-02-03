@@ -1,6 +1,6 @@
 <template>
   <section class="section__container">
-    <nav-bar back/>
+    <nav-bar back />
 
     <div class="section__content">
       <div class="card__container">
@@ -63,28 +63,40 @@ export default {
       labels: [],
       datasets: [
         {
-          label: "eth",
+          label: "token",
           data: [],
           backgroundColor: "#FC31",
           borderColor: "#FC3",
-          borderWidth: 3,
-          pointRadius: 2,
+          borderWidth: 2,
+          pointBackgroundColor: "#FC3",
+          pointRadius: 2.5,
+          pointHoverBackgroundColor: "#FFF",
+          pointHoverBorderColor: "#FC3",
+          pointHoverRadius: 6,
         },
         {
-          label: "eth",
+          label: "token",
           data: [],
           backgroundColor: "#33F3",
           borderColor: "#33F",
-          borderWidth: 3,
-          pointRadius: 2,
+          borderWidth: 2,
+          pointBackgroundColor: "#33F",
+          pointRadius: 2.5,
+          pointHoverBackgroundColor: "#BBF",
+          pointHoverBorderColor: "#33F",
+          pointHoverRadius: 6,
         },
         {
-          label: "eth",
+          label: "token",
           data: [],
           backgroundColor: "#F333",
           borderColor: "#F33",
-          borderWidth: 3,
-          pointRadius: 2,
+          borderWidth: 2,
+          pointBackgroundColor: "#F33",
+          pointRadius: 2.5,
+          pointHoverBackgroundColor: "#FBB",
+          pointHoverBorderColor: "#F33",
+          pointHoverRadius: 6,
         },
       ],
     },
