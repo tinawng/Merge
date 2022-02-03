@@ -1,5 +1,5 @@
 <template>
-  <div class="card__container">
+  <div class="card__container card_tooltip">
     <div class="card__title">Tiers</div>
     <div class="card__content">
       <div class="flex-grow flex flex-col gap-y-6 lg:gap-y-8">
