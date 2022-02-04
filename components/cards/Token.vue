@@ -57,7 +57,7 @@ export default {
   @apply relative;
   @apply w-full;
   @apply p-2;
-  @apply bg-white rounded-xl;
+  @apply text-black bg-white rounded-xl;
   @apply flex gap-4;
   @apply font-medium;
   flex-grow: 1;

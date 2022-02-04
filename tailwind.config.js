@@ -1,4 +1,9 @@
 module.exports = {
+  purge: {
+    options: {
+      safelist: ['bg-red', 'bg-blue', 'bg-yellow', 'bg-black', 'h-2', 'h-3', 'h-4', 'h-5', 'h-6', 'w-2', 'w-3', 'w-4', 'w-5', 'w-6']
+    },
+  },
   darkMode: false,
   theme: {
     colors: {

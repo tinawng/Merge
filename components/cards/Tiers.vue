@@ -79,7 +79,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import "~/assets/css/card.postcss";
 
 .card__content {
   @apply h-4/5;

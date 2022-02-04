@@ -170,7 +170,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import "~/assets/css/card.postcss";
 
 .section__container {
   @apply col-span-3 bg-black;

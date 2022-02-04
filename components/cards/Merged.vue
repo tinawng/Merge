@@ -57,7 +57,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import '~/assets/css/card.postcss';
 
 .card__content {
   @apply grid grid-cols-1 gap-y-6 lg:gap-y-8;
