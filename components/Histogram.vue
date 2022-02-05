@@ -14,6 +14,7 @@ export default {
 <style lang="postcss" scoped>
 .histogram__container {
   @apply h-full w-4;
+  min-width: 2px;
   @apply flex flex-col gap-1;
 }
 </style>
