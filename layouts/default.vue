@@ -20,8 +20,6 @@ export default {
 </script>
 
 <style lang="postcss">
-@import "~/assets/css/card.postcss";
-
 .layout__container {
   @apply h-screen;
   @apply md:grid grid-rows-2;
