@@ -91,6 +91,20 @@ export default {
     // splitChunks: {
     //   layouts: true
     // }
+    babel: {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            targets: {
+              esmodules: true
+            },
+            "loose": true,
+            "shippedProposals": true
+          }
+        ]
+      ]
+    }
   },
 
   render: {
