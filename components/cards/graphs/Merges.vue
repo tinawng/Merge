@@ -79,7 +79,7 @@ export default {
     this.chart_data.datasets[0].data = [];
     this.chart_data.labels = [];
 
-    let tab = await this.$http.$get(`token_history/${this.id}`);
+    let tab = await this.$http.$get(`token_history/${this.id}?param=merges`);
 
     // Remove useless records (only keep record where merges count change)
     tab = tab.filter((value, index, self) => index === self.findIndex((t) => t.merges === value.merges));

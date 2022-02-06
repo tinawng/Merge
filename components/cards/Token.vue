@@ -11,7 +11,9 @@
       <p class="">Merges {{merges || 0}}</p>
 
       <p class="mt-auto flex items-end gap-1">
-        <span v-if="merged" class="h-fit w-fit px-2 py-1.5 bg-black text-white text-xs font-normal rounded">MERGED</span>
+        <span v-if="merged" class="h-fit w-fit px-2 py-1.5 bg-black text-white text-xs font-normal rounded"
+          >MERGED</span
+        >
         <a
           class="h-8 w-8 ml-auto flex justify-center button bg-white rounded-full"
           :href="`https://opensea.io/assets/0xc3f8a0f5841abff777d3eefa5047e8d413a1c9ab/${id}`"
@@ -39,7 +41,7 @@ export default {
     mass: Number,
     token_class: Number,
     merges: Number,
-    merged: Boolean
+    merged: Boolean,
   },
 
   methods: {
@@ -55,11 +57,10 @@ export default {
 <style lang="postcss" scoped>
 .card__container {
   @apply relative;
-  @apply w-full;
+  @apply w-full flex-grow;
   @apply p-2;
-  @apply text-black bg-white rounded-xl;
+  @apply bg-white rounded-xl;
   @apply flex gap-4;
-  @apply font-medium;
-  flex-grow: 1;
+  @apply text-black font-medium;
 }
 </style>
