@@ -23,10 +23,18 @@
             </button>
             <button :class="{'active': history_timeframe == 'week'}" @click="changeTimeframe('week')">this week</button>
           </div>
-          <div class="card__content__row">
-            <NuxtLink v-if="history_param == 'os_price_floor'" tag="button" to="history/masses_floor"
-              >per mass floor</NuxtLink
-            >
+
+          <div v-if="history_param == 'os_price_floor'" class="card__content__row">
+            <NuxtLink tag="button" to="history/masses_floor">per mass floor</NuxtLink>
+          </div>
+          <div v-if="history_param == 'merged_count'" class="md:mt-2 card__content__row">
+            <icon class="card__icon dark bg-white" :stroke="2" variant="clock" />
+            <span class="card__content__value">{{last24h}}</span>
+            <span class="card__content__label">last 24h</span>
+            <span class="text-xs flex gap-1" :class="[diff48h >= 0 ? 'text-blue' : 'text-red']">
+              <icon class="w-3" :variant="[diff48h >= 0 ? 'arrow-up' : 'arrow-down']"/>
+              {{diff48h}}
+            </span>
           </div>
         </div>
       </div>
@@ -103,7 +111,7 @@ export default {
       },
     },
 
-    history: undefined,
+    history: [],
     history_timeframe: "all",
   }),
   computed: {
@@ -118,6 +126,27 @@ export default {
         (prev, curr) => (prev < curr ? prev : curr),
         Number.MAX_SAFE_INTEGER
       );
+    },
+    last24h: function () {
+      let tab = this.history.map((d) => {
+        return { data: d[this.history_param], timestamp: d.timestamp };
+      });
+      tab = tab.reverse();
+      let today = tab[0];
+      let yesterday = tab.find((d) => Date.parse(d.timestamp) + 86400000 < Date.parse(today.timestamp));
+      return today?.data - yesterday?.data;
+    },
+    last48h: function () {
+      let tab = this.history.map((d) => {
+        return { data: d[this.history_param], timestamp: d.timestamp };
+      });
+      tab = tab.reverse();
+      let today = tab[0];
+      let yester2day = tab.find((d) => Date.parse(d.timestamp) + 172800000 < Date.parse(today.timestamp));
+      return today?.data - yester2day?.data;
+    },
+    diff48h: function () {
+      return this.last24h - (this.last48h - this.last24h);
     },
   },
 
@@ -153,6 +182,8 @@ export default {
 
     changeTimeframe(timeframe) {
       this.history_timeframe = timeframe;
+
+      // keep only wanted data
       let tab = this.history.map((d) => {
         return { data: d[this.history_param], timestamp: d.timestamp };
       });
@@ -170,7 +201,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-
 .section__container {
   @apply col-span-3 bg-black;
 }
