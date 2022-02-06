@@ -24,7 +24,7 @@ export default {
 
 <style lang="postcss" scoped>
 .card__content {
-  @apply md:max-h-40 lg:max-h-64 xl:max-h-72;
+  @apply max-h-72 md:max-h-40 lg:max-h-64 xl:max-h-72;
   @apply pt-0 mt-8 pr-4;
   @apply overflow-y-scroll;
   @apply flex flex-wrap gap-x-6 gap-y-3;
