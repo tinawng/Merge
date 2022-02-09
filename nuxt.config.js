@@ -10,23 +10,23 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'og:type', content: 'website' },
+      { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'Merge' },
       { name: 'author', content: 'Tina Wang' },
       { name: 'twitter:creator', content: '@ItsTinaWang' },
+
+      { hid: 'og:title', property: 'og:title', content: 'Merge' },
+      { hid: 'description', name: 'description', content: 'Metadata Dashboard' },
+      { hid: 'og:description', property: 'og:description', content: 'Metadata Dashboard' },
+
+      { hid: 'og:url', property: 'og:url', content: 'https://merge.tina.cafe/' },
+      { hid: 'keywords', name: 'keywords', content: 'Merge NFT pak dashboard meta data' },
 
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:image', content: '/preview.jpg' },
       { property: 'og:image', content: '/preview.jpg' },
       { property: 'og:image:width', content: '630' },
       { property: 'og:image:height', content: '630' },
-
-      { hid: 'og:title', property: 'og:title', content: 'Merge' },
-      { hid: 'description', name: 'description', content: 'Metadata Dashboard' },
-      { hid: 'og:description', name: 'og:description', property: 'og:description', content: 'Metadata Dashboard' },
-
-      { hid: 'og:url', name: 'og:url', property: 'og:url', content: 'https://merge.tina.cafe/' },
-      { hid: 'keywords', name: 'keywords', content: 'Merge NFT pak dashboard meta data' },
     ],
     htmlAttrs: {
       lang: 'en'
