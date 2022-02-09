@@ -56,9 +56,11 @@ export default {
           data: [],
           backgroundColor: "#33F3",
           borderColor: "#33F6",
-          borderWidth: 4,
-          pointRadius: 2.5,
+          borderWidth: 2,
+          pointBackgroundColor: [],
           pointBorderColor: [],
+          pointRadius: 2.5,
+          pointHoverRadius: 6,
         },
       ],
     },
@@ -120,7 +122,7 @@ export default {
       let m1_floor = tab[0].sale_price;
 
       for (let i = 0; i < tab.length; i++) {
-        if (this.data_format == "ratio") this.chart_data.datasets[0].data.push(m1_floor / tab[i].sale_price);
+        if (this.data_format == "ratio") this.chart_data.datasets[0].data.push((tab[i].sale_price / tab[i].mass) / m1_floor);
         else if (this.data_format == "per_mass") this.chart_data.datasets[0].data.push(tab[i].sale_price / tab[i].mass);
         else if (this.data_format == "sale_price") this.chart_data.datasets[0].data.push(tab[i].sale_price);
 
@@ -129,6 +131,7 @@ export default {
         let hex = Math.max(Math.round(15 - days_since), 3).toString(16);
         let hex2 = Math.max(Math.min(Math.round(days_since), 15), 3).toString(16);
         this.chart_data.datasets[0].pointBorderColor.push(`#${hex2}${hex2}${hex}`);
+        this.chart_data.datasets[0].pointBackgroundColor.push(`#${hex2}${hex2}${hex}`);
       }
 
       this.chart_data = { ...this.chart_data };
