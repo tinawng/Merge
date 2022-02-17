@@ -7,9 +7,7 @@
     <tip v-if="tip" />
     <div v-else />
     <div v-if="back" class="hidden md:flex justify-end">
-      <Nuxt-Link to="/">
-        <button><icon class="w-6" variant="return" /></button>
-      </Nuxt-Link>
+        <button @click="$router.go(-1)"><icon class="w-6" variant="return" /></button>
     </div>
   </div>
 </template>
