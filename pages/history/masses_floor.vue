@@ -17,8 +17,8 @@
           </div>
           <div class="card__content__row flex-wrap">
             <p v-if="data_format == 'ratio'">Display ratio between m(x) sale price and m(1) floor price</p>
-            <p v-else-if="data_format == 'per_mass'">Display value by mass</p>
-            <p v-else-if="data_format == 'sale_price'">Display sale value by mass <small>(logarithmic scale)</small></p>
+            <p v-else-if="data_format == 'per_mass'">Display price by mass</p>
+            <p v-else-if="data_format == 'sale_price'">Display price per token <small>(logarithmic scale)</small></p>
             <p class="w-full">Based on the latest sale available for each mass:</p>
             <icon class="card__icon text-blue" variant="circle" />
             <span>Today</span>
@@ -101,7 +101,7 @@ export default {
     },
 
     data: [],
-    data_format: "ratio",
+    data_format: "per_mass",
   }),
 
   async mounted() {
