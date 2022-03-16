@@ -47,7 +47,7 @@ export default {
 .section__content {
   @apply h-96 md:h-full;
   @apply mt-4;
-  @apply flex items-center flex-wrap gap-x-2 md:gap-x-6 gap-y-2;
+  @apply flex items-start flex-wrap gap-x-2 md:gap-x-6 gap-y-2;
   @apply overflow-y-scroll;
 }
 
