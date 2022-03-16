@@ -19,11 +19,11 @@ export default {
 
   computed: {
     bg_color: function () {
-      let color = this.tier == 4 ? this.mass == this.alpha_mass ? 'white' : 'red' : this.tier == 2 ? 'black' : this.tier == 3 ? 'blue' : 'black';
+      let color = this.tier == 4 ? this.mass >= this.alpha_mass ? 'white' : 'red' : this.tier == 2 ? 'black' : this.tier == 3 ? 'blue' : 'black';
       return 'bg-' + color;
     },
     text_color: function () {
-      let color = this.mass == this.alpha_mass ? 'black font-medium' : 'white';
+      let color = this.mass >= this.alpha_mass ? 'black font-medium' : 'white';
       return 'text-' + color;
     },
   },

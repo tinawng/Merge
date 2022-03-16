@@ -1,6 +1,6 @@
 <template>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 2000">
-    <g :class="`m${tier} ${mass == alpha_mass ? 'a' : ''}`">
+    <g :class="`m${tier} ${mass >= alpha_mass ? 'a' : ''}`">
       <rect id="r" width="2000" height="2000" />
       <circle id="c" cx="1000" cy="1000" :r="circle_radius" />
     </g>
