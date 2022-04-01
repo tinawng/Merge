@@ -11,7 +11,7 @@
       step="1"
     />
     <div class="ml-2 mr-4 vr" />
-    <button-icon class="w-4 text-white text-opacity-70" icon="search" @click.native="submit"/>
+    <button-icon class="w-4 text-white text-opacity-70" icon="search" @click.native="submit" />
   </form>
 </template>
 
@@ -33,10 +33,10 @@ export default {
 
   methods: {
     submit() {
-      this.$router.push("/" + this.token_id);
+      this.$router.push("/" + (this.token_id || 27000))
     },
   },
-};
+}
 </script>
 
 <style lang="postcss" scoped>
