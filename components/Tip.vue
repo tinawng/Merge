@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-end text-3xs md:text-xs text-white text-opacity-30">
+  <div class="mt-auto text-3xs md:text-xs text-white text-opacity-30">
     <p>updated every 6h</p>
     <p class="flex gap-1">
       <span>want more? </span>
@@ -34,6 +34,3 @@ export default {
   },
 };
 </script>
-
-<style lang="postcss" scoped>
-</style>

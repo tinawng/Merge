@@ -1,13 +1,17 @@
 <template>
   <div class="navbar__container">
     <div class="flex justify-between">
-      <NuxtLink to="/" tag="h1" class="text-white">Merge.</NuxtLink>
+      <NuxtLink to="/" tag="a" class="text-white"><h1>Merge.</h1></NuxtLink>
       <ui-input class="hidden" :placeholder="id" />
     </div>
-    <tip v-if="tip" />
+    <div v-if="path" class="flex justify-between items-end">
+      <span class="text-3xl text-white text-opacity-90">{{path}}</span>
+      <tip v-if="tip" />
+    </div>
+    <tip v-else-if="tip" />
     <div v-else />
     <div v-if="back" class="hidden md:flex justify-end">
-        <button @click="$router.go(-1)"><icon class="w-6" variant="return" /></button>
+      <button @click="$router.go(-1)"><icon class="w-6" variant="return" /></button>
     </div>
   </div>
 </template>
@@ -18,8 +22,9 @@ export default {
     id: { type: Number, default: 27000 },
     back: Boolean,
     tip: Boolean,
+    path: String
   },
-};
+}
 </script>
 
 <style lang="postcss" scoped>

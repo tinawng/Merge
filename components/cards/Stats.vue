@@ -27,11 +27,11 @@
         <span class="card__content__value">{{price_floor}}</span>
         <span class="card__content__label">eth floor</span>
       </NuxtLink>
-      <NuxtLink tag="a" to="/history?param=owner_count" class="card__content__row">
-        <icon class="card__icon dark bg-yellow" variant="user" :stroke="2" />
-        <span class="card__content__value">{{owner_count}}</span>
-        <span class="card__content__label">owners</span>
-      </NuxtLink>
+      <div class="card__content__row">
+        <icon class="card__icon dark bg-yellow" variant="hash" :stroke="2" />
+        <span class="card__content__value">{{token_left}}</span>
+        <span class="card__content__label">#id > 28000</span>
+      </div>
     </div>
   </div>
 </template>
@@ -45,25 +45,27 @@ export default {
     merged_count: 312729,
     price_floor: 312729,
     token_count: 312729,
+    token_left: -880,
   }),
 
   async fetch() {
     let { total_mass, owner_count, merged_count, os_price_floor, token_count } = await this.$http.$get(
       "latest_snapshot"
-    );
-    this.total_mass = total_mass;
-    this.owner_count = owner_count;
-    this.merged_count = merged_count;
-    this.price_floor = os_price_floor;
-    this.token_count = token_count;
-    let { mass } = await this.$http.$get("token/1");
-    this.alpha_mass = mass;
+    )
+    this.total_mass = total_mass
+    this.owner_count = owner_count
+    this.merged_count = merged_count
+    this.price_floor = os_price_floor
+    this.token_count = token_count
+    let { mass } = await this.$http.$get("token/1")
+    this.alpha_mass = mass
+
+    this.token_left = await this.$http.$get("drops/matter/28xxx")
   },
-};
+}
 </script>
 
 <style lang="postcss" scoped>
-
 .card__content {
   @apply grid grid-cols-2 gap-y-6 lg:gap-y-8;
 }

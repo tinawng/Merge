@@ -49,4 +49,7 @@ input {
   @apply flex-grow;
   @apply bg-transparent;
 }
+::placeholder {
+  @apply text-white text-opacity-40;
+}
 </style>

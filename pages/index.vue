@@ -3,7 +3,7 @@
     <nav-bar tip/>
     <div class="overview__content">
       <cards-stats />
-      <cards-tiers />
+      <cards-matter />
       <cards-graphs-mass-repartition />
     </div>
   </section>

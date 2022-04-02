@@ -19,7 +19,7 @@ export default {
 };
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .layout__container {
   @apply h-screen;
   @apply md:grid grid-rows-2;
