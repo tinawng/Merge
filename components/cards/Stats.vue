@@ -45,7 +45,7 @@ export default {
     merged_count: 312729,
     price_floor: 312729,
     token_count: 312729,
-    token_left: -880,
+    token_left: 880,
   }),
 
   async fetch() {
