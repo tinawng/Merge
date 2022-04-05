@@ -21,7 +21,7 @@ export default {
   }),
 
   created() {
-    if (this.$route.params.list.match(/^\d+$/)) this.current_list = Number(this.$route.params.list)
+    if (this.$route.params.list.match(/^(\d+[b-c]?)$/)) this.current_list = String(this.$route.params.list)
     else this.$router.push("/")
   },
   async fetch() {

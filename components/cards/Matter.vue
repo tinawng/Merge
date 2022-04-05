@@ -8,12 +8,12 @@
           <NuxtLink tag="a" to="/drops/matter/750" class="card__content__label link">see fitting tokens</NuxtLink>
         </div>
         <div class="card__content__row">
-          <span class="card__content__value">/150</span>
-          <NuxtLink tag="a" to="/drops/matter/150" class="card__content__label link">see fitting tokens</NuxtLink>
+          <span class="card__content__value">?/450</span>
+          <NuxtLink tag="a" to="/drops/matter/450b" class="card__content__label link">see fitting tokens</NuxtLink>
         </div>
         <div class="card__content__row">
-          <span class="card__content__value">/12</span>
-          <NuxtLink tag="a" to="/drops/matter/12" class="card__content__label link">see fitting tokens</NuxtLink>
+          <span class="card__content__value">/36</span>
+          <NuxtLink tag="a" to="/drops/matter/36" class="card__content__label link">see fitting tokens</NuxtLink>
         </div>
       </div>
       <div class="flex-grow flex flex-col gap-y-6 lg:gap-y-8">
@@ -22,12 +22,12 @@
           <NuxtLink tag="a" to="/drops/matter/450" class="card__content__label link">see fitting tokens</NuxtLink>
         </div>
         <div class="card__content__row">
-          <span class="card__content__value">/36</span>
-          <NuxtLink tag="a" to="/drops/matter/36" class="card__content__label link">see fitting tokens</NuxtLink>
+          <span class="card__content__value">/150</span>
+          <NuxtLink tag="a" to="/drops/matter/150" class="card__content__label link">see fitting tokens</NuxtLink>
         </div>
         <div class="card__content__row">
-          <span class="card__content__value">/6</span>
-          <NuxtLink tag="a" to="/drops/matter/6" class="card__content__label link">see fitting tokens</NuxtLink>
+          <span class="card__content__value">/12</span>
+          <NuxtLink tag="a" to="/drops/matter/12" class="card__content__label link">see fitting tokens</NuxtLink>
         </div>
       </div>
     </div>
