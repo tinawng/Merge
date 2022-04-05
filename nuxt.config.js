@@ -15,6 +15,9 @@ export default {
       { name: 'author', content: 'Tina Wang' },
       { name: 'twitter:creator', content: '@ItsTinaWang' },
 
+      { name: 'twitter:site', content: 'https://merge.tina.cafe/' },
+      { name: 'twitter:title', content: 'Merge' },
+      { name: 'twitter:description', content: 'Metadata Dashboard' },
       { hid: 'og:title', property: 'og:title', content: 'Merge' },
       { hid: 'description', name: 'description', content: 'Metadata Dashboard' },
       { hid: 'og:description', property: 'og:description', content: 'Metadata Dashboard' },
@@ -22,7 +25,7 @@ export default {
       { hid: 'og:url', property: 'og:url', content: 'https://merge.tina.cafe/' },
       { hid: 'keywords', name: 'keywords', content: 'Merge NFT pak dashboard meta data' },
 
-      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:image', content: '/preview.jpg' },
       { property: 'og:image', content: '/preview.jpg' },
       { property: 'og:image:width', content: '630' },
