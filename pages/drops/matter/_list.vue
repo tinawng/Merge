@@ -4,7 +4,10 @@
 
     <div class="section__content">
       <div v-for="(token, i) in tokens" :key="token.id" >
-        <span class="text-xs lg:text-sm xl:text-lg text-white text-opacity-30">#{{i+1}}</span>
+        <div class="my-1 flex justify-between text-xs lg:text-sm xl:text-lg text-white text-opacity-30">
+          <span>#{{i+1}}</span>
+          <span>{{token.mass_x_merge}}</span>
+        </div>
         <merge class="w-18 md:w-24 xl:w-32" v-bind="token" />
       </div>
     </div>
