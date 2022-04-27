@@ -57,7 +57,7 @@ export default {
   data: () => ({ token_drops_fittings: [] }),
 
   async fetch() {
-    let drops = ["750", "450", "450b", "150", "36", "12", "6"]
+    let drops = ["750", "450", "450b", "150", "72", "36", "12", "6"]
     let fittings = await Promise.all(drops.map((d) => this.$http.$get(`drops/matter/${d}`)))
     fittings.forEach((fit_list, i) => {
       if (fit_list.some((token) => token.id === this.id)) this.token_drops_fittings.push(drops[i])
