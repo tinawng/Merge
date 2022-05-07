@@ -4,7 +4,7 @@
     <div class="overview__content">
       <cards-token v-bind="token" :token_class="token.class" />
       <cards-merged v-bind="token" />
-      <cards-graphs-merges v-if="token.merges > 1 && !token.merged" :id="token.id" />
+      <!-- <cards-graphs-merges v-if="token.merges > 1 && !token.merged" :id="token.id" /> -->
       <cards-merges v-if="token.merges > 0" :id="token.id" />
     </div>
   </section>

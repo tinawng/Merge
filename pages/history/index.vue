@@ -24,9 +24,9 @@
             <button :class="{'active': history_timeframe == 'week'}" @click="changeTimeframe('week')">this week</button>
           </div>
 
-          <div v-if="history_param == 'os_price_floor'" class="card__content__row">
+          <!-- <div v-if="history_param == 'os_price_floor'" class="card__content__row">
             <NuxtLink tag="button" to="history/masses_floor">per mass floor</NuxtLink>
-          </div>
+          </div> -->
           <div v-if="history_param == 'merged_count'" class="md:mt-2 card__content__row">
             <icon class="card__icon dark bg-white" :stroke="2" variant="clock" />
             <span class="card__content__value">{{last24h}}</span>

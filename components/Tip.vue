@@ -1,6 +1,7 @@
 <template>
   <div class="mt-auto text-3xs md:text-xs text-white text-opacity-30">
-    <p>updated every 6h</p>
+    <p>updated every hour</p>
+    <!-- <p>updated every <span class="line-through">6h</span> <b>10 minutes!!</b></p> -->
     <p class="flex gap-1">
       <span>want more? </span>
       <span>
