@@ -24,7 +24,7 @@
       </NuxtLink>
       <NuxtLink tag="a" to="/history?param=os_price_floor" class="card__content__row">
         <icon class="card__icon bg-blue" variant="eth" />
-        <span class="card__content__value">{{price_floor}}</span>
+        <span class="card__content__value">{{+(price_floor.toFixed(4))}}</span>
         <span class="card__content__label">eth floor</span>
       </NuxtLink>
       <div class="card__content__row">
