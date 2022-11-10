@@ -17,21 +17,21 @@
         <span class="card__content__value">{{alpha_mass}}</span>
         <span class="card__content__label">alpha mass</span>
       </NuxtLink>
-      <NuxtLink tag="a" to="/history?param=total_mass" class="card__content__row">
+      <p class="card__content__row">
         <icon class="card__icon" variant="globe" />
         <span class="card__content__value">{{total_mass}}</span>
         <span class="card__content__label">global mass</span>
-      </NuxtLink>
+      </p>
       <NuxtLink tag="a" to="/history?param=os_price_floor" class="card__content__row">
         <icon class="card__icon bg-blue" variant="eth" />
         <span class="card__content__value">{{+(price_floor.toFixed(4))}}</span>
         <span class="card__content__label">eth floor</span>
       </NuxtLink>
-      <div class="card__content__row">
+      <p class="card__content__row">
         <icon class="card__icon dark bg-yellow" variant="hash" :stroke="2" />
         <span class="card__content__value">{{token_left}}</span>
         <span class="card__content__label">#id > 28000</span>
-      </div>
+      </p>
     </div>
   </div>
 </template>
@@ -60,7 +60,7 @@ export default {
     let { mass } = await this.$http.$get("token/1")
     this.alpha_mass = mass
 
-    this.token_left = await this.$http.$get("drops/matter/28xxx")
+    this.token_left = await this.$http.$get("28xxx")
   },
 }
 </script>

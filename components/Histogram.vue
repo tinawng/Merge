@@ -8,6 +8,10 @@
 <script>
 export default {
   props: { chunks: Array },
+  created() {
+    console.log('ALED');
+    console.log(this.chunks);
+  }
 };
 </script>
 

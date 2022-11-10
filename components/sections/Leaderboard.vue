@@ -24,7 +24,7 @@ export default {
   }),
   async fetch() {
     this.top_100.mass = await this.$http.$get(`mass_top/100`);
-    this.top_100.blue = await this.$http.$get(`blue_merges`);
+    this.top_100.blue = await this.$http.$get(`blue_mass`);
     this.top_100.merges = await this.$http.$get(`merges_top/100`);
   },
 };

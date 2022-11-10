@@ -17,7 +17,7 @@ export default {
   props: { id: Number },
   data: () => ({ merges: [] }),
   async fetch() {
-    this.merges = (await this.$http.$get(`token_merges/${this.id}`)).sort((a, b) => b.mass - a.mass);
+    this.merges = (await this.$http.$get(`tokens_merged_into/${this.id}`)).sort((a, b) => b.mass - a.mass);
   },
 };
 </script>

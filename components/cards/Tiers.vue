@@ -16,7 +16,7 @@
         <NuxtLink tag="a" to="/history/tiers_count" class="card__content__row">
           <icon class="card__icon text-blue" variant="circle" />
           <span class="card__content__value">{{tiers_count[2]}}</span>
-          <span class="card__content__label"> tier 3 tokens</span>
+          <span class="card__content__label">tier 3 tokens</span>
         </NuxtLink>
       </div>
       <div class="flex flex-col justify-end card__content__label text-right">
@@ -60,26 +60,25 @@ export default {
   }),
 
   async fetch() {
-    let { tiers_count, total_mass } = await this.$http.$get("latest_snapshot");
-    this.tiers_count = tiers_count;
-    let blues = await this.$http.$get("blue_merges");
-    let blue_mass = blues.reduce((p, c) => p + c.mass, 0);
-    let yellows = await this.$http.$get("yellow_merges");
-    let yellow_mass = yellows.reduce((p, c) => p + c.mass, 0);
-    let reds = await this.$http.$get("red_merges");
-    let red_mass = reds.reduce((p, c) => p + c.mass, 0);
+    let { tiers_count, total_mass } = await this.$http.$get("latest_snapshot")
+    this.tiers_count = tiers_count
+    let blues = await this.$http.$get("blue_merges")
+    let blue_mass = blues.reduce((p, c) => p + c.mass, 0)
+    let yellows = await this.$http.$get("yellow_merges")
+    let yellow_mass = yellows.reduce((p, c) => p + c.mass, 0)
+    let reds = await this.$http.$get("red_merges")
+    let red_mass = reds.reduce((p, c) => p + c.mass, 0)
 
     this.mass_repartition = [
       { value: (red_mass / total_mass) * 100, color: "red" },
       { value: (yellow_mass / total_mass) * 100, color: "yellow" },
       { value: (blue_mass / total_mass) * 100, color: "blue" },
-    ];
+    ]
   },
-};
+}
 </script>
 
 <style lang="postcss" scoped>
-
 .card__content {
   @apply h-4/5;
   @apply flex gap-6;

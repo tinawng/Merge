@@ -33,6 +33,13 @@
     <g v-else-if="variant == 'circle'">
       <circle fill="currentColor" stroke="transparent" cx="12" cy="12" r="10"></circle>
     </g>
+    <g v-else-if="variant == 'circle-slashed'">
+      <circle cx="12" cy="12" r="10"></circle>
+      <path d="M22 2 2 22"></path>
+    </g>
+    <g v-else-if="variant == 'circle-hollow'">
+      <circle cx="12" cy="12" r="10"></circle>
+    </g>
     <g v-else-if="variant == 'square'">
       <rect fill="currentColor" x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
     </g>
@@ -70,7 +77,8 @@
       <path d="M20 4v7a4 4 0 0 1-4 4H4"></path>
     </g>
     <g v-else-if="variant == 'code'">
-      <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
+      <polyline points="16 18 22 12 16 6"></polyline>
+      <polyline points="8 6 2 12 8 18"></polyline>
     </g>
   </svg>
 </template>
@@ -84,5 +92,5 @@ export default {
       default: 1.5,
     },
   },
-};
+}
 </script>

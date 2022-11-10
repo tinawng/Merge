@@ -2,7 +2,7 @@
   <div class="graph__container">
     <div class="graph__title">
       <span>Token per mass</span>
-      <div class="flex items-center">
+      <!-- <div class="flex items-center">
         <button-icon class="w-5 ml-auto" icon="arrow-left" :disabled="chart_bound_min == 0" @click.native="previous" />
         <div class="vr mx-4" />
         <button-icon
@@ -11,7 +11,7 @@
           :disabled="chart_bound_max > mass_repartition.length"
           @click.native="next"
         />
-      </div>
+      </div> -->
     </div>
     <div ref="graph-content" class="h-full">
       <LineChart v-if="chart_height" :data="chart_data" :options="chart_option" :height="chart_height" />
