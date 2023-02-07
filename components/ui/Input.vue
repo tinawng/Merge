@@ -24,12 +24,6 @@ export default {
   data: () => ({
     token_id: undefined,
   }),
-  // watch: {
-  //   placeholder: function (newVal, oldVal) {
-  //     // watch it
-  //     console.log("Prop changed: ", newVal, " | was: ", oldVal);
-  //   },
-  // },
 
   methods: {
     submit() {

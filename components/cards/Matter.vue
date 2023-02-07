@@ -58,13 +58,11 @@ export default {
       let total_mass =
         this.mass_repartition.positive + this.mass_repartition.unidentified - this.mass_repartition.negative
 
-      let cac = [
+      return [
         { value: (this.mass_repartition.positive / total_mass) * 100, color: "white" },
         { value: (this.mass_repartition.unidentified / total_mass) * 100, color: "gray-light" },
         { value: (this.mass_repartition.negative / total_mass) * -100, color: "gray-dark" },
       ]
-      console.log(cac)
-      return cac
     },
   },
 

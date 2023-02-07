@@ -41,7 +41,6 @@ export default {
   data: () => ({
     alpha_mass: 12121,
     total_mass: 312729,
-    owner_count: 7201,
     merged_count: 312729,
     price_floor: 312729,
     token_count: 312729,
@@ -49,11 +48,10 @@ export default {
   }),
 
   async fetch() {
-    let { total_mass, owner_count, merged_count, os_price_floor, token_count } = await this.$http.$get(
+    let { total_mass, merged_count, os_price_floor, token_count } = await this.$http.$get(
       "latest_snapshot"
     )
     this.total_mass = total_mass
-    this.owner_count = owner_count
     this.merged_count = merged_count
     this.price_floor = os_price_floor
     this.token_count = token_count

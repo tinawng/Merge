@@ -7,11 +7,7 @@
 
 <script>
 export default {
-  props: { chunks: Array },
-  created() {
-    console.log('ALED');
-    console.log(this.chunks);
-  }
+  props: { chunks: Array }
 };
 </script>
 
