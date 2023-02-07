@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nuxt",
     "generate": "nuxt generate --modern",
-    "deploy": "ssh siyu \"(cd /home/pi/work/yeet/merge && rm -rf dist/)\" && scp -r ./dist siyu:/home/pi/work/yeet/merge && ssh siyu \"(cd /home/pi/work/yeet/merge && yarn compress && pm2 restart 'merge')\""
+    "deploy": "ssh kiko \"(cd /home/tina/work/yeet/merge && rm -rf dist/)\" && scp -r ./dist kiko:/home/tina/work/yeet/merge && ssh kiko \"(cd /home/tina/work/yeet/merge && yarn compress && pm2 restart 'merge')\""
   },
   "dependencies": {
     "chart.js": "2.9.4",
@@ -16,6 +16,6 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/tailwindcss": "latest",
     "nuxt": "2.15.8",
-    "postcss": "^8.4.18"
+    "postcss": "^8.4.21"
   }
 }
