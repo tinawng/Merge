@@ -1,3 +1,10 @@
+<script setup>
+defineProps({
+  variant: String,
+  stroke: { type: Number, default: 1.5 },
+})
+</script>
+
 <template>
   <svg
     viewBox="0 0 24 24"
@@ -82,15 +89,3 @@
     </g>
   </svg>
 </template>
-
-<script>
-export default {
-  props: {
-    variant: String,
-    stroke: {
-      type: Number,
-      default: 1.5,
-    },
-  },
-}
-</script>

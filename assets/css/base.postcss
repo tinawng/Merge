@@ -30,6 +30,10 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+section {
+  @apply p-4 md:p-8;
+}
+
 h1, .h1 {
   @apply text-4xl;
 }
@@ -75,7 +79,7 @@ a.link {
   font-weight: 400;
   font-display: swap;
   src: local(''),
-       url('~assets/fonts/graphik/GraphikRegular.woff2') format('woff2');
+       url('~/assets/fonts/graphik/GraphikRegular.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Graphik';
@@ -83,5 +87,5 @@ a.link {
   font-weight: 500;
   font-display: swap;
   src: local(''),
-       url('~assets/fonts/graphik/GraphikMedium.woff2') format('woff2');
+       url('~/assets/fonts/graphik/GraphikMedium.woff2') format('woff2');
 }

@@ -1,3 +1,15 @@
+<script setup>
+
+defineProps({ placeholder: { type: Number, default: 27000 } })
+
+const $router = useRouter()
+const token_id = ref(undefined)
+
+function submit() {
+  $router.push(`/${token_id.value || 27000}`)
+}
+</script>
+
 <template>
   <form class="input__container" @submit.prevent="submit">
     <icon class="w-4 mr-2 text-white" variant="hash" />
@@ -11,27 +23,9 @@
       step="1"
     />
     <div class="ml-2 mr-4 vr" />
-    <button-icon class="w-4 text-white text-opacity-70" icon="search" @click.native="submit" />
+    <button-icon class="w-4 text-white text-opacity-70" icon="search" @click="submit" />
   </form>
 </template>
-
-<script>
-export default {
-  props: {
-    placeholder: { type: Number, default: 27000 },
-  },
-
-  data: () => ({
-    token_id: undefined,
-  }),
-
-  methods: {
-    submit() {
-      this.$router.push("/" + (this.token_id || 27000))
-    },
-  },
-}
-</script>
 
 <style lang="postcss" scoped>
 .input__container {

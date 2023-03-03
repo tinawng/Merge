@@ -7,22 +7,6 @@
   @apply border-b border-white border-opacity-10;
   @apply text-xl text-white text-opacity-40;
 }
-.card__title:after {
-  content:'click to view history';
-  @apply absolute top-1/2 right-0;
-  @apply text-2xs;
-
-  @apply transform -translate-y-1/4;
-  @apply opacity-0;
-
-  transition-property: transform, opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: .2s;
-}
-.card_tooltip:hover .card__title:after {
-  @apply transform -translate-y-1/2;
-  @apply opacity-100;
-}
 .card__content {
   @apply pt-8;
 }

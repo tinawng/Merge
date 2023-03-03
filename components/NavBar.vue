@@ -1,7 +1,18 @@
+<script setup>
+defineProps({
+  id: { type: Number, default: 27000 },
+  back: Boolean,
+  tip: Boolean,
+  path: String,
+})
+
+const $router = useRouter()
+</script>
+
 <template>
   <div class="navbar__container">
     <div class="flex justify-between">
-      <NuxtLink to="/" tag="a" class="text-white"><h1>Merge.</h1></NuxtLink>
+      <NuxtLink tag="a" to="/" class="text-white"><h1>Merge.</h1></NuxtLink>
       <ui-input class="hidden" :placeholder="id" />
     </div>
     <div v-if="path" class="flex justify-between items-end">
@@ -15,17 +26,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  props: {
-    id: { type: Number, default: 27000 },
-    back: Boolean,
-    tip: Boolean,
-    path: String
-  },
-}
-</script>
 
 <style lang="postcss" scoped>
 .navbar__container {

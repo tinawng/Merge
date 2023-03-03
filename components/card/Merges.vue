@@ -1,3 +1,8 @@
+<script setup>
+const props = defineProps({ id: Number })
+const merges = await useAPI(`/tokens_merged_into/${props.id}`)
+</script>
+
 <template>
   <div class="card__container">
     <div class="card__title">Tokens Merged</div>
@@ -11,16 +16,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  props: { id: Number },
-  data: () => ({ merges: [] }),
-  async fetch() {
-    this.merges = (await this.$http.$get(`tokens_merged_into/${this.id}`)).sort((a, b) => b.mass - a.mass);
-  },
-};
-</script>
 
 <style lang="postcss" scoped>
 .card__content {

@@ -2,17 +2,12 @@
   <section class="overview">
     <nav-bar tip/>
     <div class="overview__content">
-      <cards-stats />
-      <cards-Matter />
-      <cards-graphs-mass-repartition />
+      <card-stats />
+      <card-matters />
+      <card-graph-mass-repartition />
     </div>
   </section>
 </template>
-
-<script>
-export default {
-};
-</script>
 
 <style lang="postcss" scoped>
 section.overview {

@@ -1,33 +1,17 @@
 <template>
   <div class="layout__container">
-    <Nuxt />
+    <slot />
 
-    <sections-latest-merges />
-    <sections-leaderboard />
+    <section-latest-merges />
+    <section-leaderboard />
   </div>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    contract: "0xc3f8a0f5841abff777d3eefa5047e8d413a1c9ab",
-    latest_merges: [],
-
-    modal_show: false,
-    modal_content: undefined,
-  }),
-};
-</script>
-
-<style lang="postcss" scoped>
+<style lang="postcss">
 .layout__container {
   @apply h-screen;
   @apply md:grid grid-rows-2;
   grid-template-columns: 36rem 1fr 1fr;
-}
-
-section {
-  @apply p-4 md:p-8;
 }
 
 section.merge_history {

@@ -1,3 +1,24 @@
+<script setup>
+const unidentified_count = await useAPI("/matter/unidentified_count")
+const antimatter_count = await useAPI("/matter/antimatter_count")
+const mass_repartition = await useAPI("/matter/masses")
+
+const total_matter_tokens = 1395
+
+const histogram_data = computed(() => {
+  if (!mass_repartition.value) return null
+
+  let total_mass =
+    mass_repartition.value.positive + mass_repartition.value.unidentified - mass_repartition.value.negative
+
+  return [
+    { value: (mass_repartition.value.positive / total_mass) * 100, color: "white" },
+    { value: (mass_repartition.value.unidentified / total_mass) * 100, color: "gray-light" },
+    { value: (mass_repartition.value.negative / total_mass) * -100, color: "gray-dark" },
+  ]
+})
+</script>
+
 <template>
   <div class="card__container">
     <div class="card__title">Matter*</div>
@@ -27,54 +48,28 @@
       <div class="flex flex-col gap-2">
         <div class="card__content__row">
           <icon class="w-2 text-white" variant="square" />
-          <span class="text-sm">{{Math.round(mass_repartition.positive)}}</span>
-          <span class="hidden md:block text-xs text-white text-opacity-40"> positive</span>
+          <span class="text-sm">{{Math.round(mass_repartition?.positive)}}</span>
+          <span class="hidden md:block text-xs text-white text-opacity-40">positive</span>
         </div>
         <div class="card__content__row mt-auto">
           <icon class="w-2 text-gray-light" variant="square" />
-          <span class="text-sm">{{Math.round(mass_repartition.unidentified)}}</span>
-          <span class="hidden md:block text-xs text-white text-opacity-40"> unidentified</span>
+          <span class="text-sm">{{Math.round(mass_repartition?.unidentified)}}</span>
+          <span class="hidden md:block text-xs text-white text-opacity-40">unidentified</span>
         </div>
         <div class="card__content__row">
           <icon class="w-2 text-gray-dark" variant="square" />
-          <span class="text-sm">{{Math.round(mass_repartition.negative)}}</span>
-          <span class="hidden md:block text-xs text-white text-opacity-40"> negative</span>
+          <span class="text-sm">{{Math.round(mass_repartition?.negative)}}</span>
+          <span class="hidden md:block text-xs text-white text-opacity-40">negative</span>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    total_matter_tokens: 1395,
-    unidentified_count: 256,
-    antimatter_count: 90,
-    mass_repartition: { positive: 306149, unidentified: 96799, negative: -8849 },
-  }),
-  computed: {
-    histogram_data: function () {
-      let total_mass =
-        this.mass_repartition.positive + this.mass_repartition.unidentified - this.mass_repartition.negative
-
-      return [
-        { value: (this.mass_repartition.positive / total_mass) * 100, color: "white" },
-        { value: (this.mass_repartition.unidentified / total_mass) * 100, color: "gray-light" },
-        { value: (this.mass_repartition.negative / total_mass) * -100, color: "gray-dark" },
-      ]
-    },
-  },
-
-  async fetch() {
-    this.unidentified_count = await this.$http.$get("matter/unidentified_count")
-    this.antimatter_count = await this.$http.$get("matter/antimatter_count")
-    this.mass_repartition = await this.$http.$get("matter/masses")
-  },
-}
-</script>
-
 <style lang="postcss" scoped>
+.card__container {
+  @apply pb-8 md:pb-0;
+}
 .card__content {
   @apply h-4/5;
   @apply flex gap-6;

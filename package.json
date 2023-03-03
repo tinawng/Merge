@@ -1,21 +1,22 @@
 {
   "name": "merge",
-  "version": "1.0.0",
-  "private": true,
+  "author": "Tina Wang",
+  "repository": "https://github.com/tinawng/merge",
+  "version": "2.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "nuxt",
-    "generate": "nuxt generate --modern",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
     "deploy": "ssh kiko \"(cd /home/tina/work/yeet/merge && rm -rf dist/)\" && scp -r ./dist kiko:/home/tina/work/yeet/merge && ssh kiko \"(cd /home/tina/work/yeet/merge && yarn compress && pm2 restart 'merge')\""
   },
   "dependencies": {
-    "chart.js": "2.9.4",
-    "vue-chartjs": "^3.5.1"
-  },
-  "devDependencies": {
-    "@nuxt/http": "^0.6.4",
-    "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/tailwindcss": "latest",
-    "nuxt": "2.15.8",
-    "postcss": "^8.4.21"
+    "@nuxtjs/tailwindcss": "^6.4.1",
+    "@pinia/nuxt": "^0.4.7",
+    "@vueuse/core": "^9.13.0",
+    "chart.js": "^4.2.1",
+    "nuxt": "3.2.3",
+    "pinia": "^2.0.32",
+    "vue-chartjs": "^5.2.0"
   }
 }

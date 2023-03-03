@@ -1,18 +1,16 @@
+<script setup>
+defineProps({
+  icon: String,
+  disabled: Boolean,
+})
+</script>
+
 <template>
   <div class="button__container" :class="{'opacity-20 pointer-events-none': disabled}">
     <icon :variant="icon" :stroke="2" />
-    <slot/>
+    <slot />
   </div>
 </template>
-
-<script>
-export default {
-  props: {
-    icon: String,
-    disabled: Boolean,
-  },
-};
-</script>
 
 <style lang="postcss" scoped>
 .button__container {
