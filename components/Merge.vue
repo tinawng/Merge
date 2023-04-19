@@ -3,7 +3,7 @@ const props = defineProps({
   id: Number,
   tier: Number,
   mass: Number,
-  alpha_mass: { type: Number, default: 12121 },
+  alpha_mass: { type: Number, default: 12149 },
 })
 
 const bg_color = computed(() => {

@@ -3,7 +3,7 @@
 const props = defineProps({
   tier: { type: Number, default: 1 },
   mass: { type: Number, default: 1 },
-  alpha_mass: { type: Number, default: 12121 },
+  alpha_mass: { type: Number, default: 12149 },
 })
 
 const max_radius = 988 // Instead of 1000 for aesthetic reasons 💆‍♀️
