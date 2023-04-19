@@ -12,7 +12,7 @@ const token = await useAPI(`/token/${$route.params.id}`)
     <div class="overview__content">
       <card-token v-bind="token" :token_class="token?.class" />
       <card-merged v-bind="token" />
-      <card-merges v-if="token?.merges > 0" :id="token.id" />
+      <card-merges v-if="token?.merges > 0" :id="+token.id" />
     </div>
   </section>
 </template>

@@ -9,8 +9,8 @@ const merges = await useAPI(`/tokens_merged_into/${props.id}`)
     <div class="card__content">
       <span class="flex items-center gap-3" v-for="token in merges" :key="token.id">
         <merge-icon v-bind="token" dark />
-        <NuxtLink tag="a" :to="'/'+token.id" class="link lg:text-xl">
-          {{token.id}}
+        <NuxtLink tag="a" :to="`/${+token.id}`" class="link lg:text-xl">
+          {{+token.id}}
         </NuxtLink>
       </span>
     </div>

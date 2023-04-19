@@ -28,7 +28,7 @@ const index = ref("mass")
     </div>
 
     <div class="section__content">
-      <merge v-for="token in top_100[index]" :key="token.id" class="w-18 md:w-24 xl:w-32" v-bind="token" />
+      <merge v-for="token in top_100[index]" :key="token.id" class="w-18 md:w-24 xl:w-32" :id="+token.id" :tier="token.tier" :mass="token.mass"/>
     </div>
   </section>
 </template>

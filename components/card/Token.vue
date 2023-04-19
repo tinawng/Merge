@@ -20,7 +20,7 @@ function formatDate(merged_on) {
     <div class="flex-grow flex flex-col justify-start py-3 pr-2">
       <div class="flex gap-1.5">
         <span class="text-xl lg:text-2xl xl:text-3xl font-semibold">m({{mass}})</span>
-        <span class="self-end ">#{{id}}</span>
+        <span class="self-end ">#{{+id}}</span>
       </div>
       <p class="mt-2 ">Tier {{tier}}</p>
       <p>Class {{token_class}}</p>

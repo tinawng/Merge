@@ -20,7 +20,7 @@ function formatDate(merged_on) {
         <NuxtLink tag="a" :to="`/${merge.id}`" class="section__content_token">
           <span
             >m({{merge.mass}}) <br class="md:hidden" />
-            #{{merge.id}}</span
+            #{{+merge.id}}</span
           >
           <merge-icon v-bind="merge" />
         </NuxtLink>
@@ -39,7 +39,7 @@ function formatDate(merged_on) {
           <merge-icon v-bind="merge.merged_to" />
           <span class="text-right"
             >m({{merge.merged_to.mass}}) <br class="md:hidden" />
-            #{{merge.merged_to.id}}</span
+            #{{+merge.merged_to.id}}</span
           >
         </NuxtLink>
       </div>

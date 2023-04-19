@@ -31,16 +31,16 @@ function formatDate(merged_on) {
       <div v-if="merged_to" class="card__content__row">
         <icon class="card__icon dark bg-white" :stroke="2" variant="minimize" />
         <span class="card__content__value">
-          Merged into <NuxtLink tag="a" class="link" :to="`/${merged_to}`">{{merged_to}}</NuxtLink>
+          Merged into <NuxtLink tag="a" class="link" :to="`/${+merged_to}`">{{+merged_to}}</NuxtLink>
         </span>
       </div>
       <div v-if="sale_price" class="card__content__row">
         <icon class="card__icon dark bg-white" :stroke="2" variant="eth" />
         <span class="card__content__value">Sold for {{+parseFloat(((sale_price)).toFixed(4))}}</span>
         <icon class="-ml-1.5 w-5" variant="eth" />
-        <span v-if="mass > 1" class="card__content__label"
-          >{{+parseFloat(((sale_price/mass)).toFixed(4))}} per mass</span
-        >
+        <span v-if="mass > 1" class="card__content__label">
+          {{+parseFloat(((sale_price/mass)).toFixed(4))}} per mass
+        </span>
       </div>
       <div v-if="merged_on" class="card__content__row">
         <icon class="card__icon dark bg-white" :stroke="2" variant="clock" />
