@@ -11,12 +11,12 @@
     "deploy": "ssh kiko \"(cd /home/tina/work/yeet/merge && rm -rf dist/)\" && scp -r ./dist kiko:/home/tina/work/yeet/merge && ssh kiko \"(cd /home/tina/work/yeet/merge && yarn compress && pm2 restart 'merge')\""
   },
   "dependencies": {
-    "@nuxtjs/tailwindcss": "^6.4.1",
-    "@pinia/nuxt": "^0.4.7",
-    "@vueuse/core": "^9.13.0",
+    "@nuxtjs/tailwindcss": "^6.6.6",
+    "@pinia/nuxt": "^0.4.8",
+    "@vueuse/core": "^10.0.2",
     "chart.js": "^4.2.1",
-    "nuxt": "3.2.3",
-    "pinia": "^2.0.32",
+    "nuxt": "3.4.1",
+    "pinia": "^2.0.34",
     "vue-chartjs": "^5.2.0"
   }
 }
