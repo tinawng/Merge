@@ -32,14 +32,14 @@ function formatDate(merged_on) {
         </span>
         <a
           class="h-8 w-8 ml-auto flex justify-center button bg-white rounded-full"
-          :href="`https://opensea.io/assets/0xc3f8a0f5841abff777d3eefa5047e8d413a1c9ab/${id}`"
+          :href="`https://opensea.io/assets/0xc3f8a0f5841abff777d3eefa5047e8d413a1c9ab/${+id}`"
           target="_blank"
         >
           <img src="~/assets/svgs/opensea.svg" alt="opensea" />
         </a>
         <a
           class="h-8 w-8 p-1.5 flex justify-center button bg-black rounded-full"
-          :href="`https://niftygateway.com/marketplace?collection=0xc3f8a0f5841abff777d3eefa5047e8d413a1c9ab&tokenId=${id}`"
+          :href="`https://niftygateway.com/marketplace?collection=0xc3f8a0f5841abff777d3eefa5047e8d413a1c9ab&tokenId=${+id}`"
           target="_blank"
         >
           <img src="~/assets/svgs/nifty.svg" alt="opensea" />
