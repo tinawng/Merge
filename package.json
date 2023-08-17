@@ -7,15 +7,16 @@
   "scripts": {
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "preview": "nuxt preview",
     "deploy": "ssh kiko \"(cd /home/tina/work/yeet/merge && rm -rf dist/)\" && scp -r ./dist kiko:/home/tina/work/yeet/merge && ssh kiko \"(pm2 restart 'merge')\""
   },
   "dependencies": {
-    "@nuxtjs/tailwindcss": "^6.6.6",
-    "@pinia/nuxt": "^0.4.9",
-    "@vueuse/core": "^10.0.2",
-    "chart.js": "^4.2.1",
-    "nuxt": "3.4.1",
-    "pinia": "^2.0.35",
+    "@nuxtjs/tailwindcss": "^6.8.0",
+    "@pinia/nuxt": "^0.4.11",
+    "@vueuse/core": "^10.3.0",
+    "chart.js": "^4.3.3",
+    "nuxt": "3.6.5",
+    "pinia": "^2.1.6",
     "vue-chartjs": "^5.2.0"
   }
 }
