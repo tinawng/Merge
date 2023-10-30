@@ -1,4 +1,5 @@
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
+import package_json from "./package.json"
+
 export default defineNuxtConfig({
     ssr: false,
     
@@ -6,7 +7,9 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
         public: {
-            API_URL: process.env.API_URL
+            API_URL: "",
+            CACHE_PROXY_URL: "",
+            VERSION: package_json.version,
         }
     },
 
