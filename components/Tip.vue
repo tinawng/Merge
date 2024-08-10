@@ -3,7 +3,7 @@ import { useClipboard } from "@vueuse/core"
 
 const { copy } = useClipboard()
 
-const tina_address = "tinatina.eth"
+const tina_address = "0xC958c2B65E9840F76E34EE660e27cCf254d75Fa4"
 const show_notification = ref(false)
 
 async function copyAddress() {
